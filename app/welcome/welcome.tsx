@@ -1,89 +1,223 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
+import {useState} from "react";
+import Header from "~/components/Header";
+import HeroSection from "~/sections/HeroSection";
+import GenericSection from "~/components/GenericSection";
+import FeatureCard from "~/components/FeatureCard";
+import Card from "~/components/Card";
+import Footer from "~/components/Footer";
 
 export function Welcome() {
-  return (
-    <main className="flex items-center justify-center pt-16 pb-4">
-      <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
-        <header className="flex flex-col items-center gap-9">
-          <div className="w-[500px] max-w-[100vw] p-4">
-            <img
-              src={logoLight}
-              alt="React Router"
-              className="block w-full dark:hidden"
-            />
-            <img
-              src={logoDark}
-              alt="React Router"
-              className="hidden w-full dark:block"
-            />
-          </div>
-        </header>
-        <div className="max-w-[300px] w-full space-y-6 px-4">
-          <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
-            <p className="leading-6 text-gray-700 dark:text-gray-200 text-center">
-              What&apos;s next?
-            </p>
-            <ul>
-              {resources.map(({ href, text, icon }) => (
-                <li key={href}>
-                  <a
-                    className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {icon}
-                    {text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </main>
-  );
-}
+    const [consent, setConsent] = useState(false);
+    const [fullName, setfullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
-const resources = [
-  {
-    href: "https://reactrouter.com/docs",
-    text: "React Router Docs",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M9.99981 10.0751V9.99992M17.4688 17.4688C15.889 19.0485 11.2645 16.9853 7.13958 12.8604C3.01467 8.73546 0.951405 4.11091 2.53116 2.53116C4.11091 0.951405 8.73546 3.01467 12.8604 7.13958C16.9853 11.2645 19.0485 15.889 17.4688 17.4688ZM2.53132 17.4688C0.951566 15.8891 3.01483 11.2645 7.13974 7.13963C11.2647 3.01471 15.8892 0.951453 17.469 2.53121C19.0487 4.11096 16.9854 8.73551 12.8605 12.8604C8.73562 16.9853 4.11107 19.0486 2.53132 17.4688Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "https://rmx.as/discord",
-    text: "Join Discord",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 24 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M15.0686 1.25995L14.5477 1.17423L14.2913 1.63578C14.1754 1.84439 14.0545 2.08275 13.9422 2.31963C12.6461 2.16488 11.3406 2.16505 10.0445 2.32014C9.92822 2.08178 9.80478 1.84975 9.67412 1.62413L9.41449 1.17584L8.90333 1.25995C7.33547 1.51794 5.80717 1.99419 4.37748 2.66939L4.19 2.75793L4.07461 2.93019C1.23864 7.16437 0.46302 11.3053 0.838165 15.3924L0.868838 15.7266L1.13844 15.9264C2.81818 17.1714 4.68053 18.1233 6.68582 18.719L7.18892 18.8684L7.50166 18.4469C7.96179 17.8268 8.36504 17.1824 8.709 16.4944L8.71099 16.4904C10.8645 17.0471 13.128 17.0485 15.2821 16.4947C15.6261 17.1826 16.0293 17.8269 16.4892 18.4469L16.805 18.8725L17.3116 18.717C19.3056 18.105 21.1876 17.1751 22.8559 15.9238L23.1224 15.724L23.1528 15.3923C23.5873 10.6524 22.3579 6.53306 19.8947 2.90714L19.7759 2.73227L19.5833 2.64518C18.1437 1.99439 16.6386 1.51826 15.0686 1.25995ZM16.6074 10.7755L16.6074 10.7756C16.5934 11.6409 16.0212 12.1444 15.4783 12.1444C14.9297 12.1444 14.3493 11.6173 14.3493 10.7877C14.3493 9.94885 14.9378 9.41192 15.4783 9.41192C16.0471 9.41192 16.6209 9.93851 16.6074 10.7755ZM8.49373 12.1444C7.94513 12.1444 7.36471 11.6173 7.36471 10.7877C7.36471 9.94885 7.95323 9.41192 8.49373 9.41192C9.06038 9.41192 9.63892 9.93712 9.6417 10.7815C9.62517 11.6239 9.05462 12.1444 8.49373 12.1444Z"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-];
+    async function onSubmit(e: any) {
+        e.preventDefault();
+        if (!consent) return;
+        setError(null);
+        // Minimal client-side validation
+        if (!fullName.trim() || !email.trim() || !message.trim()) {
+            setError("Bitte füllen Sie alle Felder aus.");
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setError("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+            return;
+        }
+        setLoading(true);
+        try {
+            const resp = await fetch("/api/contact/submit", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({fullName, email, message}),
+            });
+            const data = await resp.json().catch(() => ({}));
+            if (!resp.ok || data?.ok === false) {
+                throw new Error(data?.error || "Fehler beim Senden. Bitte versuchen Sie es später erneut.");
+            }
+            setSubmitted(true);
+            setfullName("");
+            setEmail("");
+            setMessage("");
+        } catch (err: any) {
+            setError(err?.message || "Unbekannter Fehler");
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    return (
+        <div
+            className="min-h-screen flex flex-col items-center justify-center dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 scroll-smooth">
+            <Header/>
+            <HeroSection/>
+            <GenericSection title={"Über uns"} id="about-us">
+                <div className="flex mt-16">
+                    <div className="grow w-full text-lg">
+                        WIR BEI BYTESERV IT SOLUTIONS Stehen für lecker Bierchen und smarte IT-Lösungen. Als junges, dynamisches Team
+                    </div>
+                    <div className="grow w-full hidden lg:visible lg:block" >
+                        <img src="/about-us-section.jpg" className="rounded-xl" />
+                    </div>
+                </div>
+            </GenericSection>
+            <GenericSection title={"Unsere Leistungen"} id="services">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+                    <FeatureCard
+                        title="Kassensysteme & POS"
+                        description="Moderne, TSE-konforme Kassenlösungen mit integrierter Warenwirtschaft und Kundenverwaltung."
+                        emoji="💻"
+                        features={[
+                            "All-in-One Kassensysteme",
+                            "Mobile Tablet-Lösungen",
+                            "Gastronomie-Spezialkassen",
+                            "Self-Service Terminals",
+                            "Warenwirtschaftssystem",
+                            "Kassenschnittstellen & Integrationen",
+                        ]}
+                    />
+
+                    <FeatureCard
+                        title="IT-Infrastruktur & Cloud"
+                        description="Sichere, skalierbare IT-Lösungen mit europäischen Cloud-Services und professionellem Netzwerk-Management."
+                        emoji="🌐"
+                        features={[
+                            "Netzwerkplanung & -installation",
+                            "DSGVO-Konforme Cloud-Migration",
+                            "Server & Backup-Lösungen",
+                            "WLAN-Marketing Systeme",
+                            "IT-Sicherheit & Monitoring",
+                            "Website & Hosting",
+                        ]}
+                    />
+
+                    <FeatureCard
+                        title="Service & Beratung"
+                        description="Rundum-Betreuung mit persönlichem Ansprechpartner, damit Sie sich auf Ihr Kerngeschäft konzentrieren können."
+                        emoji="🛠️"
+                        features={[
+                            "24/7 Support-Hotline",
+                            "Remote-Wartung & Überwachung",
+                            "Vor-Ort Service & Installation",
+                            "Mitarbeiterschulungen",
+                            "Strategische IT-Beratung",
+                            "Prozessoptimierung & Automatisierung",
+                        ]}
+                    />
+                </div>
+            </GenericSection>
+            <GenericSection title={"Warum ByteServ?"} id="why-us">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+                    <Card title="Schnelle Umsetzung"
+                          description="Kurze Reaktionszeiten und pragmatische Lösungen – damit Ihr Betrieb läuft, wenn es darauf ankommt."
+                          emoji="⚡"/>
+                    <Card title="Datenschutz & Compliance"
+                          description="DSGVO-konforme Systeme, Hosting in der EU und nachvollziehbare Sicherheitskonzepte."
+                          emoji="🛡️"/>
+                    <Card title="Alles aus einer Hand"
+                          description="Von Beratung über Installation bis Support. Ein Ansprechpartner, klare Verantwortung."
+                          emoji="🤝"/>
+                </div>
+            </GenericSection>
+            <GenericSection title={"Kontakt"} id="contact">
+                <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="bg-white/10 border border-white/20 rounded-2xl p-6 backdrop-blur-md">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="text-3xl">📬</div>
+                            <h3 className="text-2xl font-semibold">So erreichen Sie uns</h3>
+                        </div>
+
+                        <div className="space-y-2 text-sm">
+                            <div className="flex items-center gap-2">
+                                <span aria-hidden>✉️</span>
+                                <a href="mailto:hello@byteserv.it"
+                                   className="underline decoration-white/40 hover:decoration-white">hello@byteserv.it</a>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span aria-hidden>📞</span>
+                                <a href="tel:+491234567890"
+                                   className="underline decoration-white/40 hover:decoration-white">+49 123 456 7890</a>
+                            </div>
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                            <span
+                                className="px-2.5 py-1 rounded-full bg-white/10 border border-white/20">Antwort i.d.R. &lt; 24h</span>
+                            <span
+                                className="px-2.5 py-1 rounded-full bg-white/10 border border-white/20">Mo–Fr 9–18 Uhr</span>
+                        </div>
+                    </div>
+                    <div className="bg-white/10 border border-white/20 rounded-2xl p-6 backdrop-blur-md">
+                        <h3 className="text-2xl font-semibold mb-2">Kostenlose Erstberatung</h3>
+                        <p className="mb-4">Beschreiben Sie kurz Ihr Anliegen – wir melden uns zeitnah zurück.</p>
+                        {submitted ? (
+                            <div
+                                className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 text-emerald-100">
+                                <div className="text-lg font-semibold mb-1">Vielen Dank! ✅</div>
+                                <p>Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns in der Regel innerhalb von
+                                    24 Stunden.</p>
+                            </div>
+                        ) : (
+                            <form className="grid grid-cols-1 gap-3" onSubmit={onSubmit}>
+                                <input
+                                    className="px-4 py-2 rounded-lg bg-white/5 border border-white/20"
+                                    placeholder="Name"
+                                    value={fullName}
+                                    onChange={(e) => setfullName(e.target.value)}
+                                />
+                                <input
+                                    className="px-4 py-2 rounded-lg bg-white/5 border border-white/20"
+                                    placeholder="E-Mail"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <textarea
+                                    className="px-4 py-2 rounded-lg bg-white/5 border border-white/20"
+                                    placeholder="Nachricht"
+                                    rows={4}
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                />
+                                {error && (
+                                    <div
+                                        className="text-sm text-red-200 bg-red-500/10 border border-red-400/30 rounded-lg px-3 py-2">{error}</div>
+                                )}
+                                <div className="flex items-start gap-3 text-sm">
+                                    <input
+                                        id="privacy"
+                                        type="checkbox"
+                                        checked={consent}
+                                        onChange={(e) => setConsent(e.target.checked)}
+                                        className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10"
+                                        required
+                                    />
+                                    <label htmlFor="privacy" className="select-none">
+                                        Ich habe die <button type="button"
+                                                             onClick={() => document.querySelector('footer')?.scrollIntoView({behavior: 'smooth'})}
+                                                             className="underline decoration-white/40 hover:decoration-white">Datenschutzerklärung</button> gelesen
+                                        und stimme der Verarbeitung meiner Daten zu.
+                                    </label>
+                                </div>
+                                <button
+                                    className="relative inline-flex items-center justify-center rounded-full px-5 py-2.5 text-md font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70 disabled:opacity-60 disabled:cursor-not-allowed select-none cursor-pointer bg-white/10 text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 backdrop-blur-md backdrop-saturate-150 hover:bg-white/15 active:bg-white/20"
+                                    type="submit"
+                                    disabled={!consent || loading}
+                                >
+                                    {loading ? 'Senden…' : 'Anfrage senden'}
+                                </button>
+                            </form>
+                        )}
+                    </div>
+                </div>
+            </GenericSection>
+            <Footer/>
+        </div>
+    );
+}
