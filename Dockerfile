@@ -53,8 +53,8 @@ COPY --from=production-dependencies-env --chown=reactrouter:nodejs /app/node_mod
 # Copy built application
 COPY --from=build-env --chown=reactrouter:nodejs /app/build ./build
 
-# Copy public assets if they exist
-COPY --chown=reactrouter:nodejs public ./public 2>/dev/null || true
+# Copy public assets
+COPY --from=build-env --chown=reactrouter:nodejs /app/public ./public
 
 # Switch to non-root user
 USER reactrouter

@@ -211,6 +211,7 @@ docker inspect --format='{{.State.Health.Status}}' byteserv-homepage
 2. Check `package-lock.json` is committed to repository
 3. Verify all dependencies are correctly listed in `package.json`
 4. Clear Docker build cache: `docker builder prune`
+5. If you see "COPY failed" errors, check that all source files are not excluded in `.dockerignore`
 
 ## Performance Optimization
 
