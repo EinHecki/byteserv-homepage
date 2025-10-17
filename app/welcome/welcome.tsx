@@ -661,9 +661,20 @@ export function Welcome() {
                             <p className="mb-6 text-gray-300">Beschreiben Sie kurz Ihr Anliegen – wir melden uns zeitnah zurück.</p>
 
                             {submitted ? (
-                                <div className="rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-6">
-                                    <div className="text-xl font-semibold mb-2">Vielen Dank! ✅</div>
-                                    <p className="text-gray-300">Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns in der Regel innerhalb von 24 Stunden.</p>
+                                <div className="rounded-2xl border border-emerald-400/40 bg-emerald-500/20 backdrop-blur-sm p-8 animate-in fade-in duration-500">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="text-3xl">✅</div>
+                                        <div className="text-2xl font-bold text-emerald-100">Vielen Dank!</div>
+                                    </div>
+                                    <p className="text-gray-200 leading-relaxed">
+                                        Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns in der Regel innerhalb von 24 Stunden bei Ihnen.
+                                    </p>
+                                    <button
+                                        onClick={() => setSubmitted(false)}
+                                        className="mt-4 text-sm text-emerald-300 hover:text-emerald-200 underline decoration-emerald-400/40 hover:decoration-emerald-300 transition-colors"
+                                    >
+                                        Weitere Anfrage senden
+                                    </button>
                                 </div>
                             ) : (
                                 <form className="space-y-4" onSubmit={onSubmit}>
@@ -681,15 +692,21 @@ export function Welcome() {
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                     <textarea
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 focus:border-white/40 focus:outline-none transition-colors"
+                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 focus:border-white/40 focus:outline-none transition-colors resize-none"
                                         placeholder="Nachricht"
                                         rows={4}
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
                                     />
                                     {error && (
-                                        <div className="text-sm text-red-300 bg-red-500/10 border border-red-400/30 rounded-xl px-4 py-3">
-                                            {error}
+                                        <div className="rounded-xl border border-red-400/40 bg-red-500/20 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+                                            <div className="flex items-start gap-3">
+                                                <div className="text-xl flex-shrink-0 mt-0.5">⚠️</div>
+                                                <div>
+                                                    <div className="font-semibold text-red-200 mb-1">Oops!</div>
+                                                    <div className="text-sm text-red-100 leading-relaxed">{error}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
                                     <div className="flex items-start gap-3">

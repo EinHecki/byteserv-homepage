@@ -207,11 +207,22 @@ docker inspect --format='{{.State.Health.Status}}' byteserv-homepage
 
 ### Build Failures
 
-1. Ensure Node 20+ is used in Dockerfile
-2. Check `package-lock.json` is committed to repository
-3. Verify all dependencies are correctly listed in `package.json`
-4. Clear Docker build cache: `docker builder prune`
-5. If you see "COPY failed" errors, check that all source files are not excluded in `.dockerignore`
+**Common Issues & Solutions:**
+
+1. **Import Resolution Errors** (`~/components/Header` not found):
+   - **Cause**: The `~` alias doesn't work in production builds
+   - **Solution**: All imports have been changed to relative paths (`../components/Header`)
+   - Already fixed in all route files ✅
+
+2. **Node Version**: Ensure Node 20+ is used in Dockerfile
+
+3. **Missing package-lock.json**: Check `package-lock.json` is committed to repository
+
+4. **Dependency Issues**: Verify all dependencies are correctly listed in `package.json`
+
+5. **Cache Issues**: Clear Docker build cache: `docker builder prune`
+
+6. **COPY Failures**: If you see "COPY failed" errors, check that all source files are not excluded in `.dockerignore`
 
 ## Performance Optimization
 

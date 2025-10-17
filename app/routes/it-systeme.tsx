@@ -1,6 +1,6 @@
 import type { Route } from "./+types/it-systeme";
-import Header from "~/components/Header";
-import Footer from "~/components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
