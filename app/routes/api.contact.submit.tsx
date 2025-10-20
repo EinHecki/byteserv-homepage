@@ -62,9 +62,6 @@ export async function action({ request }: Route.ActionArgs) {
       // }
     });
 
-    // Verify connection
-    await transporter.verify();
-
     // HTML Email Template
     const htmlContent = `
       <!DOCTYPE html>

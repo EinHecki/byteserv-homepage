@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 
@@ -10,11 +10,30 @@ export function Welcome() {
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [showConfetti, setShowConfetti] = useState(false);
+
+    // Field-level validation states
+    const [emailTouched, setEmailTouched] = useState(false);
+    const [emailError, setEmailError] = useState<string | null>(null);
+
+    // Real-time email validation
+    useEffect(() => {
+        if (emailTouched && email) {
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                setEmailError("Ungültige E-Mail-Adresse");
+            } else {
+                setEmailError(null);
+            }
+        }
+    }, [email, emailTouched]);
 
     async function onSubmit(e: any) {
         e.preventDefault();
         if (!consent) return;
+
         setError(null);
+
+        // Validation
         if (!fullName.trim() || !email.trim() || !message.trim()) {
             setError("Bitte füllen Sie alle Felder aus.");
             return;
@@ -23,6 +42,7 @@ export function Welcome() {
             setError("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
             return;
         }
+
         setLoading(true);
         try {
             const resp = await fetch("/api/contact/submit", {
@@ -30,14 +50,24 @@ export function Welcome() {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({fullName, email, message}),
             });
-            const data = await resp.json().catch(() => ({}));
-            if (!resp.ok || data?.ok === false) {
+
+            // Better error handling
+            if (!resp.ok) {
+                const data = await resp.json().catch(() => ({}));
                 throw new Error(data?.error || "Fehler beim Senden. Bitte versuchen Sie es später erneut.");
             }
+
+            // Success!
             setSubmitted(true);
+            setShowConfetti(true);
             setfullName("");
             setEmail("");
             setMessage("");
+            setConsent(false);
+            setEmailTouched(false);
+
+            // Hide confetti after animation
+            setTimeout(() => setShowConfetti(false), 4000);
         } catch (err: any) {
             setError(err?.message || "Unbekannter Fehler");
         } finally {
@@ -656,50 +686,123 @@ export function Welcome() {
                             </div>
                         </div>
 
-                        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md">
+                        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden">
+                            {/* Confetti Animation */}
+                            {showConfetti && (
+                                <div className="absolute inset-0 pointer-events-none z-50">
+                                    {[...Array(50)].map((_, i) => (
+                                        <div
+                                            key={i}
+                                            className="absolute animate-confetti"
+                                            style={{
+                                                left: `${Math.random() * 100}%`,
+                                                top: '-10px',
+                                                animationDelay: `${Math.random() * 0.5}s`,
+                                                animationDuration: `${2 + Math.random() * 2}s`,
+                                            }}
+                                        >
+                                            <div
+                                                className="w-2 h-2 rounded-full"
+                                                style={{
+                                                    backgroundColor: ['#10b981', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6'][Math.floor(Math.random() * 5)],
+                                                    transform: `rotate(${Math.random() * 360}deg)`,
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
                             <h3 className="text-2xl font-semibold mb-4">Kostenlose Erstberatung</h3>
                             <p className="mb-6 text-gray-300">Beschreiben Sie kurz Ihr Anliegen – wir melden uns zeitnah zurück.</p>
 
                             {submitted ? (
-                                <div className="rounded-2xl border border-emerald-400/40 bg-emerald-500/20 backdrop-blur-sm p-8 animate-in fade-in duration-500">
+                                <div className="rounded-2xl border border-emerald-400/40 bg-emerald-500/20 backdrop-blur-sm p-8 animate-[slideIn_0.5s_ease-out]">
                                     <div className="flex items-center gap-3 mb-3">
-                                        <div className="text-3xl">✅</div>
+                                        <div className="text-4xl animate-[bounce_1s_ease-in-out_3]">🎉</div>
                                         <div className="text-2xl font-bold text-emerald-100">Vielen Dank!</div>
                                     </div>
-                                    <p className="text-gray-200 leading-relaxed">
+                                    <p className="text-gray-200 leading-relaxed mb-4">
                                         Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns in der Regel innerhalb von 24 Stunden bei Ihnen.
                                     </p>
+                                    <div className="flex items-center gap-2 text-emerald-300 text-sm mb-4">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        <span>E-Mail-Bestätigung wird versendet</span>
+                                    </div>
                                     <button
-                                        onClick={() => setSubmitted(false)}
-                                        className="mt-4 text-sm text-emerald-300 hover:text-emerald-200 underline decoration-emerald-400/40 hover:decoration-emerald-300 transition-colors"
+                                        onClick={() => {
+                                            setSubmitted(false);
+                                            setShowConfetti(false);
+                                        }}
+                                        className="text-sm text-emerald-300 hover:text-emerald-200 underline decoration-emerald-400/40 hover:decoration-emerald-300 transition-colors"
                                     >
-                                        Weitere Anfrage senden
+                                        ← Weitere Anfrage senden
                                     </button>
                                 </div>
                             ) : (
                                 <form className="space-y-4" onSubmit={onSubmit}>
-                                    <input
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 focus:border-white/40 focus:outline-none transition-colors"
-                                        placeholder="Name"
-                                        value={fullName}
-                                        onChange={(e) => setfullName(e.target.value)}
-                                    />
-                                    <input
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 focus:border-white/40 focus:outline-none transition-colors"
-                                        placeholder="E-Mail"
-                                        type="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                    <textarea
-                                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 focus:border-white/40 focus:outline-none transition-colors resize-none"
-                                        placeholder="Nachricht"
-                                        rows={4}
-                                        value={message}
-                                        onChange={(e) => setMessage(e.target.value)}
-                                    />
+                                    {/* Name Field */}
+                                    <div className="relative">
+                                        <input
+                                            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-all duration-200"
+                                            placeholder="Name"
+                                            value={fullName}
+                                            onChange={(e) => setfullName(e.target.value)}
+                                            disabled={loading}
+                                        />
+                                    </div>
+
+                                    {/* Email Field with Inline Validation */}
+                                    <div className="relative">
+                                        <input
+                                            className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                                emailError
+                                                    ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                                                    : emailTouched && email && !emailError
+                                                    ? 'border-green-400 focus:border-green-400 focus:ring-green-400/20'
+                                                    : 'border-white/20 focus:border-blue-400 focus:ring-blue-400/20'
+                                            }`}
+                                            placeholder="E-Mail"
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            onBlur={() => setEmailTouched(true)}
+                                            disabled={loading}
+                                        />
+                                        {emailTouched && email && (
+                                            <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                                                {emailError ? (
+                                                    <div className="text-red-400 text-sm">✕</div>
+                                                ) : (
+                                                    <div className="text-green-400 text-sm animate-[scaleIn_0.2s_ease-out]">✓</div>
+                                                )}
+                                            </div>
+                                        )}
+                                        {emailError && emailTouched && (
+                                            <p className="text-red-400 text-xs mt-1 ml-1 animate-[slideDown_0.2s_ease-out]">{emailError}</p>
+                                        )}
+                                    </div>
+
+                                    {/* Message Field */}
+                                    <div className="relative">
+                                        <textarea
+                                            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-all duration-200 resize-none"
+                                            placeholder="Nachricht"
+                                            rows={4}
+                                            value={message}
+                                            onChange={(e) => setMessage(e.target.value)}
+                                            disabled={loading}
+                                        />
+                                        <div className="absolute bottom-3 right-3 text-xs text-gray-500">
+                                            {message.length}/500
+                                        </div>
+                                    </div>
+
+                                    {/* Error Message */}
                                     {error && (
-                                        <div className="rounded-xl border border-red-400/40 bg-red-500/20 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+                                        <div className="rounded-xl border border-red-400/40 bg-red-500/20 backdrop-blur-sm p-4 animate-[shake_0.5s_ease-in-out]">
                                             <div className="flex items-start gap-3">
                                                 <div className="text-xl flex-shrink-0 mt-0.5">⚠️</div>
                                                 <div>
@@ -709,28 +812,48 @@ export function Welcome() {
                                             </div>
                                         </div>
                                     )}
+
+                                    {/* Privacy Consent */}
                                     <div className="flex items-start gap-3">
                                         <input
                                             id="privacy"
                                             type="checkbox"
                                             checked={consent}
                                             onChange={(e) => setConsent(e.target.checked)}
-                                            className="mt-1 h-4 w-4 rounded"
+                                            className="mt-1 h-4 w-4 rounded accent-blue-500 cursor-pointer"
                                             required
+                                            disabled={loading}
                                         />
-                                        <label htmlFor="privacy" className="text-sm text-gray-300">
+                                        <label htmlFor="privacy" className="text-sm text-gray-300 cursor-pointer">
                                             Ich habe die <button type="button"
                                                                  onClick={() => document.querySelector('footer')?.scrollIntoView({behavior: 'smooth'})}
-                                                                 className="underline decoration-white/40 hover:decoration-white">Datenschutzerklärung</button> gelesen
+                                                                 className="underline decoration-white/40 hover:decoration-white transition-all">Datenschutzerklärung</button> gelesen
                                             und stimme der Verarbeitung meiner Daten zu.
                                         </label>
                                     </div>
+
+                                    {/* Submit Button */}
                                     <button
-                                        className="w-full px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full px-6 py-3.5 bg-white text-black rounded-full font-semibold hover:bg-gray-200 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 group"
                                         type="submit"
-                                        disabled={!consent || loading}
+                                        disabled={!consent || loading || !!emailError}
                                     >
-                                        {loading ? 'Senden…' : 'Anfrage senden'}
+                                        {loading ? (
+                                            <>
+                                                <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                <span>Wird gesendet...</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>Anfrage senden</span>
+                                                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </>
+                                        )}
                                     </button>
                                 </form>
                             )}
