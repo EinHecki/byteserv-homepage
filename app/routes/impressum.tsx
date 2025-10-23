@@ -5,8 +5,8 @@ import Footer from "~/components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Impressum - ByteServ" },
-    { name: "description", content: "Impressum und rechtliche Informationen der ByteServ." },
+    { title: "Impressum - Naumann Tech Solutions" },
+    { name: "description", content: "Impressum und rechtliche Informationen von Naumann Tech Solutions." },
     { name: "robots", content: "noindex, follow" },
   ];
 }
@@ -30,36 +30,35 @@ export default function Impressum() {
             <h1 className="text-4xl sm:text-5xl font-bold mb-8">Impressum</h1>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 mt-8">Angaben gemäß § 5 TMG</h2>
+              <h2 className="text-2xl font-bold mb-6 mt-8">Angaben gemäß § 5 DDG</h2>
 
               <div className="bg-white/5 p-6 rounded-xl border border-white/10 mb-8">
-                <p className="text-gray-100 mb-3 text-lg"><strong>ByteServ</strong></p>
-                <p className="text-gray-300 leading-relaxed mb-2">Musterstraße 12</p>
-                <p className="text-gray-300 leading-relaxed mb-2">12345 Musterstadt</p>
-                <p className="text-gray-300 leading-relaxed">Deutschland</p>
+                <p className="text-gray-100 mb-3 text-lg"><strong>Darian Naumann</strong></p>
+                <p className="text-gray-300 leading-relaxed mb-2">Maxstraße 37</p>
+                <p className="text-gray-300 leading-relaxed">53111 Bonn</p>
               </div>
 
               <h3 className="text-xl font-semibold mb-4 mt-6">Vertreten durch:</h3>
-              <p className="text-gray-300 leading-relaxed mb-6">Max Mustermann</p>
+              <p className="text-gray-300 leading-relaxed mb-6">Darian Naumann</p>
 
               <h3 className="text-xl font-semibold mb-4 mt-6">Kontakt:</h3>
               <div className="text-gray-300 leading-relaxed mb-6 space-y-2">
                 <p>
                   Telefon:{" "}
-                  <a href="tel:+491234567890" className="text-blue-400 hover:text-blue-300">
-                    +49 123 456 7890
+                  <a href="tel:015678574224" className="text-blue-400 hover:text-blue-300">
+                    0156 7857 4224
                   </a>
                 </p>
                 <p>
                   E-Mail:{" "}
-                  <a href="mailto:hello@byteserv.example" className="text-blue-400 hover:text-blue-300">
-                    hello@byteserv.example
+                  <a href="mailto:hallo@naumann-tech.de" className="text-blue-400 hover:text-blue-300">
+                    hallo@naumann-tech.de
                   </a>
                 </p>
               </div>
 
               <h3 className="text-xl font-semibold mb-4 mt-6">Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:</h3>
-              <p className="text-gray-300 leading-relaxed mb-6">DE123456789</p>
+              <p className="text-gray-300 leading-relaxed mb-6">DE454667674</p>
             </section>
 
             <section className="mb-12">

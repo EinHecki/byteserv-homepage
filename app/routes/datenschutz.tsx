@@ -5,8 +5,8 @@ import Footer from "~/components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Datenschutzerklärung - ByteServ" },
-    { name: "description", content: "Datenschutzerklärung der ByteServ - Informationen zum Schutz Ihrer personenbezogenen Daten." },
+    { title: "Datenschutzerklärung - Naumann Tech Solutions" },
+    { name: "description", content: "Datenschutzerklärung von Naumann Tech Solutions - Informationen zum Schutz Ihrer personenbezogenen Daten." },
     { name: "robots", content: "noindex, follow" },
   ];
 }
@@ -132,11 +132,11 @@ export default function Datenschutz() {
               <h3 className="text-2xl font-semibold mb-4 mt-8">Hinweis zur verantwortlichen Stelle</h3>
               <p className="text-gray-300 leading-relaxed mb-4">Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
               <div className="text-gray-300 leading-relaxed mb-4 bg-white/5 p-6 rounded-xl border border-white/10">
-                <p className="mb-2"><strong>ByteServ</strong></p>
-                <p className="mb-2">Musterstraße 12</p>
-                <p className="mb-2">12345 Musterstadt</p>
-                <p className="mb-2">E-Mail: <a href="mailto:datenschutz@byteserv.example" className="text-blue-400 hover:text-blue-300">datenschutz@byteserv.example</a></p>
-                <p>Tel.: <a href="tel:+491234567890" className="text-blue-400 hover:text-blue-300">+49 123 456 7890</a></p>
+                <p className="mb-2"><strong>Darian Naumann</strong></p>
+                <p className="mb-2">Maxstraße 37</p>
+                <p className="mb-2">53111 Bonn</p>
+                <p className="mb-2">E-Mail: <a href="mailto:datenschutz@naumann-tech.de" className="text-blue-400 hover:text-blue-300">datenschutz@naumann-tech.de</a></p>
+                <p>Tel.: <a href="tel:015678574224" className="text-blue-400 hover:text-blue-300">0156 7857 4224</a></p>
               </div>
               <p className="text-gray-300 leading-relaxed mb-4">
                 Die verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit
