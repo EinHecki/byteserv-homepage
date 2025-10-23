@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Webentwicklung - ByteServ IT Solutions" },
+    { title: "Webentwicklung - ByteServ" },
     { name: "description", content: "Professionelle Webentwicklung für Restaurants und Mittelstand. Individuelle Websites mit Online-Bestellsystem und Integration Ihrer Kassensysteme." },
     { name: "keywords", content: "Webentwicklung, Website erstellen, Online-Bestellsystem, Restaurant Website, Digitale Speisekarte, Liefersystem" },
   ];

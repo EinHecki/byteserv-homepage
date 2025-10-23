@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a ByteServ IT Solutions homepage built with React Router v7 (the new framework from the Remix team). It's a server-side rendered (SSR) business website for an IT services company focused on POS systems, IT infrastructure, and web development for retail, hospitality, and service providers.
+This is a ByteServ homepage built with React Router v7 (the new framework from the Remix team). It's a server-side rendered (SSR) business website for an IT services company focused on POS systems, IT infrastructure, and web development for retail, hospitality, and service providers.
 
 The site is primarily in German and includes sections for services, contact forms, and company information.
 

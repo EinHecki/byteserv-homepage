@@ -152,7 +152,7 @@ export async function action({ request }: Route.ActionArgs) {
           <div class="container">
             <div class="header">
               <h1>📬 Neue Kontaktanfrage</h1>
-              <p>ByteServ IT Solutions Website</p>
+              <p>ByteServ Website</p>
             </div>
             <div class="content">
               <div class="info-row">
@@ -186,7 +186,7 @@ export async function action({ request }: Route.ActionArgs) {
 
     // Plain text fallback
     const textContent = `
-Neue Kontaktanfrage - ByteServ IT Solutions
+Neue Kontaktanfrage - ByteServ
 
 Name: ${fullName}
 E-Mail: ${email}
@@ -205,7 +205,7 @@ Sie können direkt auf diese E-Mail antworten, um mit ${fullName} in Kontakt zu 
       from: `"ByteServ Kontaktformular" <${smtpFrom}>`,
       to: smtpTo,
       replyTo: email,
-      subject: `🔔 Neue Anfrage von ${fullName}`,
+      subject: `Ihre Anfrage an ByteServ, ${fullName}`,
       text: textContent,
       html: htmlContent,
     });

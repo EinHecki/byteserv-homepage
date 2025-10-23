@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "IT-Systeme - ByteServ IT Solutions" },
+    { title: "IT-Systeme - ByteServ" },
     { name: "description", content: "Professionelle IT-Lösungen für den Mittelstand: Netzwerktechnik, Hardware-Support, Cloud-Hosting, MDM und Videoüberwachung. Alles aus einer Hand." },
     { name: "keywords", content: "IT-Systeme, Netzwerktechnik, IT-Support, Cloud-Hosting, MDM, Videoüberwachung, IT-Infrastruktur, Mittelstand" },
   ];

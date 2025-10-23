@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Digitale Gastro - ByteServ IT Solutions" },
+    { title: "Digitale Gastro - ByteServ" },
     { name: "description", content: "Digitale Lösungen für Restaurants: Tischreservierung, Self-Order-Systeme, digitale Speisekarten, Gutscheine und HACCP-Protokollierung." },
     { name: "keywords", content: "Digitale Gastronomie, Tischreservierung, Self-Order, QR-Code Bestellung, Digitale Speisekarte, Restaurant Software" },
   ];

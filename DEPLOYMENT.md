@@ -1,4 +1,4 @@
-# ByteServ IT Solutions - Deployment Guide
+# ByteServ - Deployment Guide
 
 This guide covers deploying the application to production using Coolify or any Docker-compatible hosting platform.
 

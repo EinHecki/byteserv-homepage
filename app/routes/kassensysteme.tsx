@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Kassensysteme - ByteServ IT Solutions" },
+    { title: "Kassensysteme - ByteServ" },
     { name: "description", content: "Moderne Kassensysteme für Gastronomie und Einzelhandel. Stationär, mobil oder in der Cloud - individuell konfiguriert nach Ihren Anforderungen." },
     { name: "keywords", content: "Kassensysteme, POS-Systeme, Gastronomie Kasse, Mobile Kassensysteme, Cloud Kasse, PC-Cash" },
   ];

@@ -6,22 +6,22 @@ import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "ByteServ IT Solutions - IT & Kassensysteme für Gastronomie & Mittelstand" },
+    { title: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
     { name: "description", content: "Ihr All-In-One Partner für IT-Lösungen, moderne Kassensysteme, digitale Gastro-Lösungen und Webentwicklung. Von Beratung bis Support – alles aus einer Hand." },
     { name: "keywords", content: "Kassensysteme, POS-Systeme, IT-Lösungen, Gastronomie, Digitale Gastro, Webentwicklung, Cloud, Netzwerktechnik, IT-Support, Mittelstand" },
-    { name: "author", content: "ByteServ IT Solutions" },
+    { name: "author", content: "ByteServ" },
     { name: "viewport", content: "width=device-width, initial-scale=1" },
 
     // Open Graph
     { property: "og:type", content: "website" },
-    { property: "og:title", content: "ByteServ IT Solutions - IT & Kassensysteme für Gastronomie & Mittelstand" },
+    { property: "og:title", content: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
     { property: "og:description", content: "Ihr All-In-One Partner für IT-Lösungen, moderne Kassensysteme, digitale Gastro-Lösungen und Webentwicklung. Von Beratung bis Support – alles aus einer Hand." },
-    { property: "og:site_name", content: "ByteServ IT Solutions" },
+    { property: "og:site_name", content: "ByteServ" },
     { property: "og:locale", content: "de_DE" },
 
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "ByteServ IT Solutions - IT & Kassensysteme für Gastronomie & Mittelstand" },
+    { name: "twitter:title", content: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
     { name: "twitter:description", content: "Ihr All-In-One Partner für IT-Lösungen, moderne Kassensysteme, digitale Gastro-Lösungen und Webentwicklung." },
 
     // Additional SEO
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 pb-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent leading-tight animate-fade-in-up">
-            ByteServ IT Solutions
+            ByteServ
           </h1>
 
           <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
