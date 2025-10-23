@@ -46,4 +46,3 @@ coverage
 .editorconfig
 .prettierrc
 .eslintrc*
-tsconfig.json
