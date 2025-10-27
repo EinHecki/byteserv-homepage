@@ -13,7 +13,9 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(npx sharp-cli:*)",
-      "Bash(copy favicon.png publicfavicon.png)"
+      "Bash(copy favicon.png publicfavicon.png)",
+      "Bash(curl:*)",
+      "WebFetch(domain:unsplash.com)"
     ],
     "deny": [],
     "ask": []

@@ -45,14 +45,14 @@ export default function Impressum() {
               <div className="text-gray-300 leading-relaxed mb-6 space-y-2">
                 <p>
                   Telefon:{" "}
-                  <a href="tel:015678574224" className="text-blue-400 hover:text-blue-300">
-                    0156 7857 4224
+                  <a href="tel:+4922897278840" className="text-blue-400 hover:text-blue-300">
+                    0228 9727884-0
                   </a>
                 </p>
                 <p>
                   E-Mail:{" "}
-                  <a href="mailto:hallo@naumann-tech.de" className="text-blue-400 hover:text-blue-300">
-                    hallo@naumann-tech.de
+                  <a href="mailto:info@byteserv.it" className="text-blue-400 hover:text-blue-300">
+                    info@byteserv.it
                   </a>
                 </p>
               </div>

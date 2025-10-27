@@ -88,10 +88,10 @@ export default function Datenschutz() {
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6 mt-12">2. Hosting</h2>
               <p className="text-gray-300 leading-relaxed mb-4">Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
-              <p className="text-gray-300 leading-relaxed mb-4 font-semibold">netcup GmbH</p>
-              <p className="text-gray-300 leading-relaxed mb-4">Anbieter ist die netcup GmbH, Daimlerstraße 25, 76185 Karlsruhe, Deutschland.</p>
+              <p className="text-gray-300 leading-relaxed mb-4 font-semibold">Hetzner Online GmbH</p>
+              <p className="text-gray-300 leading-relaxed mb-4">Anbieter ist die Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Deutschland.</p>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Die Nutzung von netcup erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein
+                Die Nutzung von Hetzner erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein
                 berechtigtes Interesse an der möglichst zuverlässigen Bereitstellung unserer Website. Soweit eine
                 entsprechende Einwilligung vorliegt, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art.
                 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG, sofern die Einwilligung die Speicherung von Cookies
@@ -101,8 +101,8 @@ export default function Datenschutz() {
 
               <h3 className="text-2xl font-semibold mb-4 mt-8">Auftragsverarbeitung</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Wir haben mit der netcup GmbH einen Vertrag über Auftragsverarbeitung (AVV) geschlossen. Dieser
-                datenschutzrechtlich vorgeschriebene Vertrag stellt sicher, dass netcup personenbezogene Daten
+                Wir haben mit der Hetzner Online GmbH einen Vertrag über Auftragsverarbeitung (AVV) geschlossen. Dieser
+                datenschutzrechtlich vorgeschriebene Vertrag stellt sicher, dass Hetzner personenbezogene Daten
                 unserer Websitebesucherinnen und -besucher ausschließlich nach unseren Weisungen und im Einklang mit
                 den Bestimmungen der DSGVO verarbeitet.
               </p>
@@ -135,8 +135,8 @@ export default function Datenschutz() {
                 <p className="mb-2"><strong>Darian Naumann</strong></p>
                 <p className="mb-2">Maxstraße 37</p>
                 <p className="mb-2">53111 Bonn</p>
-                <p className="mb-2">E-Mail: <a href="mailto:datenschutz@naumann-tech.de" className="text-blue-400 hover:text-blue-300">datenschutz@naumann-tech.de</a></p>
-                <p>Tel.: <a href="tel:015678574224" className="text-blue-400 hover:text-blue-300">0156 7857 4224</a></p>
+                <p className="mb-2">E-Mail: <a href="mailto:info@byteserv.it" className="text-blue-400 hover:text-blue-300">info@byteserv.it</a></p>
+                <p>Tel.: <a href="tel:+4922897278840" className="text-blue-400 hover:text-blue-300">0228 9727884-0</a></p>
               </div>
               <p className="text-gray-300 leading-relaxed mb-4">
                 Die verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit

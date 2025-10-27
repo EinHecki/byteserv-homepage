@@ -49,7 +49,7 @@ export default function Kassensysteme() {
             <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300">
               <div className="aspect-video rounded-2xl overflow-hidden mb-6">
                 <img
-                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
+                  src="/kassensystem-stationaer.jpg"
                   alt="Stationäre Kassensysteme"
                   className="w-full h-full object-cover"
                 />
@@ -79,7 +79,7 @@ export default function Kassensysteme() {
             <div className="bg-gradient-to-br from-green-900/20 to-teal-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300">
               <div className="aspect-video rounded-2xl overflow-hidden mb-6">
                 <img
-                  src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&q=80"
+                  src="/kassensystem-mobil.jpg"
                   alt="Mobile Touchsysteme"
                   className="w-full h-full object-cover"
                 />
@@ -121,7 +121,7 @@ export default function Kassensysteme() {
             <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300">
               <div className="aspect-video rounded-2xl overflow-hidden mb-6">
                 <img
-                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+                  src="/kassensystem-cloud.jpg"
                   alt="Cloud-Verbindung"
                   className="w-full h-full object-cover"
                 />

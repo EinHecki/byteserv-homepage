@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LogoCarousel from "~/components/LogoCarousel";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -279,6 +280,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+        <LogoCarousel
+            logos={[
+                "pc-cash_logo.png",
+                "digituu_logo.png",
+                "hobex_logo.png",
+            ]}
+        />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900/50 to-black">
