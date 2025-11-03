@@ -285,6 +285,8 @@ export default function Home() {
             logos={[
                 "pc-cash_logo.png",
                 "digituu_logo.png",
+                "HECKEL_logo.png",
+                "Partner-Tech_Logo.png",
             ]}
         />
 
