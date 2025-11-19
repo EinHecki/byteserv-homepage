@@ -10,5 +10,4 @@ export default [
   route("/datenschutz", "routes/datenschutz.tsx"),
   route("/agb", "routes/agb.tsx"),
   route("/api/contact/submit", "routes/api.contact.submit.tsx"),
-  route("/sitemap.xml", "routes/sitemap[.]xml.tsx"),
 ] satisfies RouteConfig;
