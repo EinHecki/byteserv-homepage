@@ -9,7 +9,7 @@ export function meta({}: Route.MetaArgs) {
   return [
     { title: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
     { name: "description", content: "Ihr All-In-One Partner für IT-Lösungen, moderne Kassensysteme, digitale Gastro-Lösungen und Webentwicklung. Von Beratung bis Support – alles aus einer Hand." },
-    { name: "keywords", content: "Kassensysteme, POS-Systeme, IT-Lösungen, Gastronomie, Digitale Gastro, Webentwicklung, Cloud, Netzwerktechnik, IT-Support, Mittelstand" },
+    { name: "keywords", content: "Kassensysteme, POS-Systeme, IT-Lösungen, Gastronomie, Digitale Gastro, Webentwicklung, Cloud, Netzwerktechnik, IT-Support, Mittelstand, Bonn, NRW, Köln, NRW" },
     { name: "author", content: "ByteServ" },
     { name: "viewport", content: "width=device-width, initial-scale=1" },
 
