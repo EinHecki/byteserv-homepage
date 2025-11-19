@@ -15,7 +15,9 @@
       "Bash(npx sharp-cli:*)",
       "Bash(copy favicon.png publicfavicon.png)",
       "Bash(curl:*)",
-      "WebFetch(domain:unsplash.com)"
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:byteserv.de)",
+      "Bash(node scripts/generate-sitemap.js:*)"
     ],
     "deny": [],
     "ask": []

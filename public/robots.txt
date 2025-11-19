@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://byteserv.de/sitemap.xml
+Sitemap: https://byteserv.it/sitemap.xml

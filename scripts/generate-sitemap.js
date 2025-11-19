@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const baseUrl = "https://byteserv.de";
+const baseUrl = "https://byteserv.it";
 const today = new Date().toISOString().split('T')[0];
 
 const routes = [
