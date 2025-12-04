@@ -16,7 +16,8 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router": "^7.9.2",
-    "sharp-cli": "^5.2.0"
+    "sharp-cli": "^5.2.0",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
     "@react-router/dev": "^7.9.2",

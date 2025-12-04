@@ -9,6 +9,8 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import "vanilla-cookieconsent/dist/cookieconsent.css";
+import CookieConsentBanner from "~/components/CookieConsent";
 
 export const links: Route.LinksFunction = () => [
   // Favicons
@@ -92,6 +94,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <CookieConsentBanner />
       </body>
     </html>
   );

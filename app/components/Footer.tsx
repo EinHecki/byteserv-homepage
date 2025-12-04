@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { openCookieSettings } from "~/components/CookieConsent";
 
 function Footer() {
   return (
@@ -19,6 +20,14 @@ function Footer() {
           >
             Datenschutz
           </Link>
+          <span className="opacity-40">|</span>
+          <button
+            type="button"
+            onClick={openCookieSettings}
+            className="underline decoration-white/30 hover:decoration-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70 rounded transition-all cursor-pointer"
+          >
+            Cookie-Einstellungen
+          </button>
         </nav>
       </div>
     </footer>
