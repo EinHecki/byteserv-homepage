@@ -53,7 +53,7 @@ export const links: LinksRoute.LinksFunction = () => [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
@@ -75,17 +75,17 @@ export default function Home() {
             <span className="text-sm text-gray-300">Ihr IT-Partner in der Region</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 pb-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent leading-tight animate-fade-in-up">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 pb-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent leading-tight animate-fade-in-up break-words">
             ByteServ
           </h1>
 
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-lg sm:text-2xl md:text-3xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed animate-fade-in-up break-words" style={{ animationDelay: '0.1s' }}>
             Ihr All-In-One Partner für IT-Lösungen
           </p>
 
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Von modernen Kassensystemen über digitale Gastro-Lösungen bis hin zu professioneller
-            Webentwicklung und IT-Infrastruktur – wir machen Ihr Unternehmen fit für die Zukunft.
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up break-words" style={{ animationDelay: '0.2s' }}>
+            Von modernen Kassen&shy;systemen über digitale Gastro-Lösungen bis hin zu professioneller
+            Web&shy;entwicklung und IT-Infrastruktur – wir machen Ihr Unternehmen fit für die Zukunft.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
@@ -120,13 +120,13 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section id="services" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900/50 to-black">
+      <section id="services" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900/50 to-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 pb-2 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 pb-2 leading-tight break-words">
               Unsere Leistungen
             </h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed break-words">
               Spezialisiert auf die Gastronomie und den Mittelstand bieten wir maßgeschneiderte
               IT-Lösungen, die Ihr Business auf das nächste Level bringen.
             </p>
@@ -136,26 +136,26 @@ export default function Home() {
             {/* Kassensysteme */}
             <Link
               to="/kassensysteme"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20"
+              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
             >
-              <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">💳</div>
-              <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight">Kassensysteme</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">
+              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">💳</div>
+              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Kassen&shy;systeme</h3>
+              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
                 Moderne POS-Systeme für Gastronomie und Einzelhandel – stationär, mobil oder als Cloud-Lösung.
                 TSE-konform und zukunftssicher.
               </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Stationäre Kassensysteme
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Stationäre Kassen&shy;systeme</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Mobile Touch-Systeme
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Mobile Touch-Systeme</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Cloud-Anbindung
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Cloud-Anbindung</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> TSE-zertifiziert
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">TSE-zertifiziert</span>
                 </li>
               </ul>
               <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
@@ -166,26 +166,26 @@ export default function Home() {
             {/* Digitale Gastro */}
             <Link
               to="/digitale-gastro"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20"
+              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
             >
-              <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">🍽️</div>
-              <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight">Digitale Gastro</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">
+              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">🍽️</div>
+              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Digitale Gastro</h3>
+              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
                 Optimieren Sie Ihren Gastro-Betrieb mit digitalen Lösungen: Online-Reservierung,
                 Self-Order-Systeme, digitale Kreidetafeln und mehr.
               </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Tischreservierungssysteme
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Tisch&shy;reservierungs&shy;systeme</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Self-Order Terminals
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Self-Order Terminals</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Digitale Speisekarten
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Digitale Speise&shy;karten</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> HACCP-Protokolle
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">HACCP-Protokolle</span>
                 </li>
               </ul>
               <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
@@ -196,26 +196,26 @@ export default function Home() {
             {/* Webentwicklung */}
             <Link
               to="/webentwicklung"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20"
+              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
             >
-              <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">💻</div>
-              <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight">Webentwicklung</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">
+              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">💻</div>
+              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Web&shy;entwicklung</h3>
+              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
                 Professionelle Websites und Web-Anwendungen – modern, schnell und SEO-optimiert.
-                Von der Visitenkarte bis zum komplexen Liefersystem.
+                Von der Visitenkarte bis zum komplexen Liefer&shy;system.
               </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Individuelle Websites
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Individuelle Websites</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Online-Shops
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Online-Shops</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Liefersysteme
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Liefer&shy;systeme</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> SEO & Performance
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">SEO & Performance</span>
                 </li>
               </ul>
               <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
@@ -226,26 +226,26 @@ export default function Home() {
             {/* IT-Systeme */}
             <Link
               to="/it-systeme"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20"
+              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
             >
-              <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">🖥️</div>
-              <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight">IT-Systeme</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">
+              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">🖥️</div>
+              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">IT-Systeme</h3>
+              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
                 Rundum-IT-Betreuung für Ihr Unternehmen: Netzwerk, Hardware, Cloud-Lösungen,
                 Support und Sicherheit – alles aus einer Hand.
               </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Netzwerktechnik & WLAN
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Netzwerk&shy;technik & WLAN</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Hardware & Support
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Hardware & Support</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Cloud & Hosting
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Cloud & Hosting</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Videoüberwachung
+                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Video&shy;überwachung</span>
                 </li>
               </ul>
               <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
@@ -257,40 +257,40 @@ export default function Home() {
       </section>
 
       {/* Why ByteServ */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 pb-2 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 pb-2 leading-tight break-words">
               Warum ByteServ?
             </h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed break-words">
               Wir sind mehr als nur ein IT-Dienstleister – wir sind Ihr Partner für digitale Transformation.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
-              <div className="text-4xl sm:text-5xl mb-4">🎯</div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight">Branchenkenntnis</h3>
-              <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden min-w-0">
+              <div className="text-3xl sm:text-5xl mb-4">🎯</div>
+              <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Branchen&shy;kenntnis</h3>
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed break-words">
                 Spezialisiert auf Gastronomie und Mittelstand verstehen wir Ihre spezifischen
-                Anforderungen und Herausforderungen.
+                Anforderungen und Heraus&shy;forderungen.
               </p>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
-              <div className="text-4xl sm:text-5xl mb-4">🚀</div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight">Moderne Technologie</h3>
-              <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-                Wir setzen auf zukunftssichere Lösungen mit modernsten Technologien –
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden min-w-0">
+              <div className="text-3xl sm:text-5xl mb-4">🚀</div>
+              <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Moderne Technologie</h3>
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed break-words">
+                Wir setzen auf zukunfts&shy;sichere Lösungen mit modernsten Technologien –
                 damit Sie immer einen Schritt voraus sind.
               </p>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
-              <div className="text-4xl sm:text-5xl mb-4">🤝</div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight">Persönlicher Support</h3>
-              <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden min-w-0">
+              <div className="text-3xl sm:text-5xl mb-4">🤝</div>
+              <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Persönlicher Support</h3>
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed break-words">
                 Von der Beratung über die Implementierung bis zum laufenden Support –
                 wir sind für Sie da.
               </p>
@@ -310,14 +310,14 @@ export default function Home() {
         />
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900/50 to-black">
+      <section id="contact" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900/50 to-black overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 pb-2 leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6 pb-2 leading-tight break-words">
               Bereit für die digitale Zukunft?
             </h2>
-            <p className="text-lg sm:text-xl text-gray-400 leading-relaxed">
-              Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch.
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed break-words">
+              Kontaktieren Sie uns für ein unverbindliches Beratungs&shy;gespräch.
             </p>
           </div>
 

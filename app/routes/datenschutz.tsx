@@ -13,10 +13,10 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Datenschutz() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Header />
 
-      <main className="px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+      <main className="px-4 sm:px-6 lg:px-8 py-20 sm:py-32 overflow-hidden">
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <Link
