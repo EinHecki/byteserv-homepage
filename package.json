@@ -2,6 +2,9 @@
   "name": "byteserv-homepage",
   "private": true,
   "type": "module",
+  "overrides": {
+    "glob": "^11.1.0"
+  },
   "scripts": {
     "build": "node scripts/generate-sitemap.js && react-router build",
     "dev": "react-router dev",
