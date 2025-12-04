@@ -3,12 +3,41 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "Kassensysteme Gastronomie & Einzelhandel | POS Bonn - ByteServ";
+  const description = "TSE-konforme Kassensysteme für Gastronomie & Einzelhandel in Bonn & NRW. Stationär, mobil oder Cloud - mit PC-Cash & persönlicher Beratung.";
+  const url = "https://byteserv.it/kassensysteme";
+  const image = "https://byteserv.it/og-image.png";
+
   return [
-    { title: "Kassensysteme - ByteServ" },
-    { name: "description", content: "Moderne Kassensysteme für Gastronomie und Einzelhandel. Stationär, mobil oder in der Cloud - individuell konfiguriert nach Ihren Anforderungen." },
-    { name: "keywords", content: "Kassensysteme, POS-Systeme, Gastronomie Kasse, Mobile Kassensysteme, Cloud Kasse, PC-Cash" },
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: "Kassensysteme Bonn, POS-Systeme Gastronomie, TSE Kasse NRW, Mobile Kassensysteme, Cloud Kasse, PC-Cash, Gastro Kasse Köln, Einzelhandel Kasse" },
+
+    // Open Graph
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:site_name", content: "ByteServ" },
+    { property: "og:locale", content: "de_DE" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // SEO
+    { name: "robots", content: "index, follow" },
   ];
 }
+
+export const links: Route.LinksFunction = () => [
+  { rel: "canonical", href: "https://byteserv.it/kassensysteme" },
+];
 
 export default function Kassensysteme() {
   return (

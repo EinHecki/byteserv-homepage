@@ -3,12 +3,41 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "IT-Systeme & Support Bonn | Netzwerk & Cloud - ByteServ";
+  const description = "IT-Lösungen für Mittelstand in Bonn & NRW: Netzwerktechnik, Cloud-Hosting, Hardware-Support & Videoüberwachung. Persönlicher IT-Partner.";
+  const url = "https://byteserv.it/it-systeme";
+  const image = "https://byteserv.it/og-image.png";
+
   return [
-    { title: "IT-Systeme - ByteServ" },
-    { name: "description", content: "Professionelle IT-Lösungen für den Mittelstand: Netzwerktechnik, Hardware-Support, Cloud-Hosting, MDM und Videoüberwachung. Alles aus einer Hand." },
-    { name: "keywords", content: "IT-Systeme, Netzwerktechnik, IT-Support, Cloud-Hosting, MDM, Videoüberwachung, IT-Infrastruktur, Mittelstand" },
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: "IT-Systeme Bonn, Netzwerktechnik NRW, IT-Support Köln, Cloud-Hosting, MDM, Videoüberwachung, IT-Infrastruktur Mittelstand, WLAN Installation" },
+
+    // Open Graph
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:site_name", content: "ByteServ" },
+    { property: "og:locale", content: "de_DE" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // SEO
+    { name: "robots", content: "index, follow" },
   ];
 }
+
+export const links: Route.LinksFunction = () => [
+  { rel: "canonical", href: "https://byteserv.it/it-systeme" },
+];
 
 export default function ITSysteme() {
   return (

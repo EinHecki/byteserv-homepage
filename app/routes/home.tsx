@@ -6,32 +6,50 @@ import Footer from "../components/Footer";
 import LogoCarousel from "~/components/LogoCarousel";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "IT & Kassensysteme Bonn | Gastronomie & Mittelstand - ByteServ";
+  const description = "Ihr IT-Partner in Bonn & NRW: Moderne Kassensysteme, digitale Gastro-Lösungen, Webentwicklung und IT-Support. Kostenlose Beratung anfordern!";
+  const url = "https://byteserv.it";
+  const image = "https://byteserv.it/og-image.png";
+
   return [
-    { title: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
-    { name: "description", content: "Ihr All-In-One Partner für IT-Lösungen, moderne Kassensysteme, digitale Gastro-Lösungen und Webentwicklung. Von Beratung bis Support – alles aus einer Hand." },
-    { name: "keywords", content: "Kassensysteme, POS-Systeme, IT-Lösungen, Gastronomie, Digitale Gastro, Webentwicklung, Cloud, Netzwerktechnik, IT-Support, Mittelstand, Bonn, NRW, Köln, NRW" },
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: "Kassensysteme Bonn, POS-Systeme NRW, IT-Lösungen Köln, Gastronomie Kassensystem, Digitale Gastro, Webentwicklung Bonn, IT-Support Mittelstand, TSE Kasse, PC-Cash, Digituu" },
     { name: "author", content: "ByteServ" },
-    { name: "viewport", content: "width=device-width, initial-scale=1" },
 
     // Open Graph
     { property: "og:type", content: "website" },
-    { property: "og:title", content: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
-    { property: "og:description", content: "Ihr All-In-One Partner für IT-Lösungen, moderne Kassensysteme, digitale Gastro-Lösungen und Webentwicklung. Von Beratung bis Support – alles aus einer Hand." },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:image:alt", content: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
     { property: "og:site_name", content: "ByteServ" },
     { property: "og:locale", content: "de_DE" },
 
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
-    { name: "twitter:description", content: "Ihr All-In-One Partner für IT-Lösungen, moderne Kassensysteme, digitale Gastro-Lösungen und Webentwicklung." },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+    { name: "twitter:image:alt", content: "ByteServ - IT & Kassensysteme für Gastronomie & Mittelstand" },
 
     // Additional SEO
-    { name: "robots", content: "index, follow" },
+    { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     { name: "googlebot", content: "index, follow" },
     { name: "language", content: "German" },
-    { name: "revisit-after", content: "7 days" },
+    { name: "geo.region", content: "DE-NW" },
+    { name: "geo.placename", content: "Bonn" },
   ];
 }
+
+import type { Route as LinksRoute } from "./+types/home";
+
+export const links: LinksRoute.LinksFunction = () => [
+  { rel: "canonical", href: "https://byteserv.it/" },
+];
 
 export default function Home() {
   return (

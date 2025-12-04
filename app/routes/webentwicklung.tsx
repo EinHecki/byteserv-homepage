@@ -3,12 +3,41 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "Webentwicklung Bonn | Website & Online-Shop - ByteServ";
+  const description = "Professionelle Webentwicklung in Bonn & NRW: Websites, Online-Shops, Liefersysteme & Kassensystem-Integration. SEO-optimiert & modern.";
+  const url = "https://byteserv.it/webentwicklung";
+  const image = "https://byteserv.it/og-image.png";
+
   return [
-    { title: "Webentwicklung - ByteServ" },
-    { name: "description", content: "Professionelle Webentwicklung für Restaurants und Mittelstand. Individuelle Websites mit Online-Bestellsystem und Integration Ihrer Kassensysteme." },
-    { name: "keywords", content: "Webentwicklung, Website erstellen, Online-Bestellsystem, Restaurant Website, Digitale Speisekarte, Liefersystem" },
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: "Webentwicklung Bonn, Website erstellen NRW, Online-Shop Köln, Restaurant Website, Liefersystem, Webdesign Mittelstand, SEO Bonn" },
+
+    // Open Graph
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:site_name", content: "ByteServ" },
+    { property: "og:locale", content: "de_DE" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // SEO
+    { name: "robots", content: "index, follow" },
   ];
 }
+
+export const links: Route.LinksFunction = () => [
+  { rel: "canonical", href: "https://byteserv.it/webentwicklung" },
+];
 
 export default function Webentwicklung() {
   return (

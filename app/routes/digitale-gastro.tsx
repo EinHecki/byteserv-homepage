@@ -3,12 +3,41 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "Digitale Gastro-Lösungen | Restaurant Software Bonn - ByteServ";
+  const description = "Digitalisieren Sie Ihren Gastro-Betrieb: Tischreservierung, Self-Order, digitale Speisekarten & HACCP. Ihr Partner in Bonn, Köln & NRW.";
+  const url = "https://byteserv.it/digitale-gastro";
+  const image = "https://byteserv.it/og-image.png";
+
   return [
-    { title: "Digitale Gastro - ByteServ" },
-    { name: "description", content: "Digitale Lösungen für Restaurants: Tischreservierung, Self-Order-Systeme, digitale Speisekarten, Gutscheine und HACCP-Protokollierung." },
-    { name: "keywords", content: "Digitale Gastronomie, Tischreservierung, Self-Order, QR-Code Bestellung, Digitale Speisekarte, Restaurant Software" },
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: "Digitale Gastronomie Bonn, Tischreservierung System, Self-Order Restaurant, QR-Code Bestellung, Digitale Speisekarte NRW, Restaurant Software Köln, HACCP digital" },
+
+    // Open Graph
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:site_name", content: "ByteServ" },
+    { property: "og:locale", content: "de_DE" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // SEO
+    { name: "robots", content: "index, follow" },
   ];
 }
+
+export const links: Route.LinksFunction = () => [
+  { rel: "canonical", href: "https://byteserv.it/digitale-gastro" },
+];
 
 export default function DigitaleGastro() {
   return (

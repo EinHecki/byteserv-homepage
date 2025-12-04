@@ -30,6 +30,50 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+// JSON-LD Structured Data for SEO
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "ByteServ",
+  "legalName": "Darian Naumann",
+  "description": "IT & Kassensysteme für Gastronomie & Mittelstand in Bonn und NRW. Kassensysteme, digitale Gastro-Lösungen, Webentwicklung und IT-Support.",
+  "url": "https://byteserv.it",
+  "logo": "https://byteserv.it/logo-low_height.png",
+  "image": "https://byteserv.it/og-image.png",
+  "telephone": "+4922897278840",
+  "email": "info@byteserv.it",
+  "vatID": "DE454667674",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Maxstraße 37",
+    "addressLocality": "Bonn",
+    "addressRegion": "NRW",
+    "postalCode": "53111",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "50.7374",
+    "longitude": "7.0982"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bonn" },
+    { "@type": "City", "name": "Köln" },
+    { "@type": "State", "name": "Nordrhein-Westfalen" }
+  ],
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "IT-Dienstleistungen",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kassensysteme" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digitale Gastro-Lösungen" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Webentwicklung" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT-Systeme & Support" } }
+    ]
+  }
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de">
@@ -37,6 +81,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <Meta />
         <Links />
       </head>
