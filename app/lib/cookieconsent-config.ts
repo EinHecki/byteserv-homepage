@@ -4,126 +4,113 @@ import type { CookieConsentConfig } from 'vanilla-cookieconsent';
 export const GA_MEASUREMENT_ID = 'G-CKB9ZN1VJF';
 
 /**
- * gtag Hilfsfunktion
+ * Initialisiert dataLayer und gtag Funktion (Google Standard)
  */
-function gtag(...args: unknown[]): void {
-  if (typeof window === 'undefined') return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
-}
-
-/**
- * Initialisiert gtag.js mit Google Consent Mode v2 (Default: alles denied)
- * MUSS vor dem Laden von gtag.js aufgerufen werden!
- */
-export function initGtagConsentMode(): void {
+function ensureGtag(): void {
   if (typeof window === 'undefined') return;
 
   window.dataLayer = window.dataLayer || [];
 
-  // Consent Mode v2: Standardmäßig alles abgelehnt (DSGVO-konform)
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-    functionality_storage: 'denied',
-    personalization_storage: 'denied',
-    security_storage: 'granted', // Sicherheits-Cookies immer erlaubt
-    wait_for_update: 500, // Warte max 500ms auf Consent-Update
-  });
-
-  // Region-spezifische Einstellungen für EU/EWR (extra strikt)
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-    region: ['DE', 'AT', 'CH', 'EU'], // Deutschland, Österreich, Schweiz, EU
-  });
+  if (typeof window.gtag !== 'function') {
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer.push(arguments);
+    };
+  }
 }
 
 /**
- * Lädt das Google Analytics gtag.js Script
+ * Lädt Google Analytics mit Consent Mode v2
+ * Wird NUR aufgerufen, wenn der Nutzer zugestimmt hat (DSGVO-konform)
  */
-export function loadGtagScript(): void {
+export function loadGoogleAnalytics(): void {
   if (typeof window === 'undefined') return;
 
   // Prüfen ob bereits geladen
   if (document.querySelector(`script[src*="googletagmanager.com/gtag"]`)) return;
 
-  // gtag.js Script laden
+  ensureGtag();
+
+  // 1. Consent Mode v2: Consent-Status ZUERST setzen (vor Script-Load!)
+  // Da diese Funktion nur bei Zustimmung aufgerufen wird, setzen wir 'granted'
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',           // Keine Werbe-Cookies
+    ad_user_data: 'denied',         // Keine Werbe-Nutzerdaten
+    ad_personalization: 'denied',   // Keine personalisierte Werbung
+    analytics_storage: 'granted',   // Analytics erlaubt (Nutzer hat zugestimmt)
+    functionality_storage: 'granted',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+  });
+
+  // 2. gtag.js Script laden
   const script = document.createElement('script');
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
   script.async = true;
   document.head.appendChild(script);
 
-  // GA initialisieren
-  gtag('js', new Date());
-  gtag('config', GA_MEASUREMENT_ID, {
-    anonymize_ip: true,
+  // 3. GA4 konfigurieren
+  window.gtag('js', new Date());
+  window.gtag('config', GA_MEASUREMENT_ID, {
+    // DSGVO-konforme Einstellungen
+    anonymize_ip: true,                    // IP-Anonymisierung
+    allow_google_signals: false,           // Keine Google Signals (Demographics)
+    allow_ad_personalization_signals: false, // Keine Werbe-Personalisierung
+    restricted_data_processing: true,      // Eingeschränkte Datenverarbeitung
     send_page_view: true,
   });
 }
 
 /**
- * Aktualisiert die Consent-Einstellungen via gtag
- */
-export function updateGtagConsent(analyticsGranted: boolean): void {
-  if (typeof window === 'undefined') return;
-
-  gtag('consent', 'update', {
-    analytics_storage: analyticsGranted ? 'granted' : 'denied',
-  });
-}
-
-/**
- * Aktualisiert alle Consent-Einstellungen (für zukünftige Marketing-Cookies)
- */
-export function updateFullGtagConsent(options: {
-  analytics?: boolean;
-  marketing?: boolean;
-}): void {
-  if (typeof window === 'undefined') return;
-
-  gtag('consent', 'update', {
-    analytics_storage: options.analytics ? 'granted' : 'denied',
-    ad_storage: options.marketing ? 'granted' : 'denied',
-    ad_user_data: options.marketing ? 'granted' : 'denied',
-    ad_personalization: options.marketing ? 'granted' : 'denied',
-  });
-}
-
-/**
- * Entfernt Google Analytics Cookies
+ * Entfernt alle Google Analytics Cookies
  */
 export function removeGoogleAnalyticsCookies(): void {
   if (typeof document === 'undefined') return;
 
-  const cookiesToRemove = ['_ga', '_ga_', '_gid', '_gat', '_gcl'];
-  const domains = [window.location.hostname, '.' + window.location.hostname];
+  // Alle aktuellen Cookies auslesen
+  const allCookies = document.cookie.split(';').map(c => c.trim().split('=')[0]);
 
-  cookiesToRemove.forEach(cookieName => {
+  // GA-Cookie Prefixe
+  const gaCookiePrefixes = ['_ga', '_gid', '_gat', '_gcl'];
+
+  // Finde alle GA-Cookies
+  const gaCookies = allCookies.filter(name =>
+    gaCookiePrefixes.some(prefix => name.startsWith(prefix))
+  );
+
+  // Verschiedene Domain-Varianten zum Löschen
+  const hostname = window.location.hostname;
+  const domainParts = hostname.split('.');
+  const domains = [
+    '',
+    hostname,
+    '.' + hostname,
+  ];
+
+  // Root-Domain hinzufügen (z.B. .byteserv.it)
+  if (domainParts.length >= 2) {
+    const rootDomain = domainParts.slice(-2).join('.');
+    domains.push('.' + rootDomain);
+  }
+
+  // Lösche jeden GA-Cookie mit allen Domain/Path-Varianten
+  gaCookies.forEach(cookieName => {
     domains.forEach(domain => {
-      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain}`;
-      // Cookies mit Prefix (z.B. _ga_XXXXXX)
-      document.cookie.split(';').forEach(cookie => {
-        const name = cookie.split('=')[0].trim();
-        if (name.startsWith(cookieName)) {
-          document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain}`;
-        }
+      const domainPart = domain ? `; domain=${domain}` : '';
+      ['/', ''].forEach(path => {
+        const pathPart = path ? `; path=${path}` : '';
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC${pathPart}${domainPart}`;
       });
     });
   });
 }
 
 /**
- * DSGVO-konforme Cookie Consent Konfiguration mit Google Consent Mode v2
+ * DSGVO-konforme Cookie Consent Konfiguration
  */
 export const cookieConsentConfig: CookieConsentConfig = {
   autoShow: true,
 
-  // Cookie Einstellungen
   cookie: {
     name: 'cc_cookie',
     domain: typeof window !== 'undefined' ? window.location.hostname : '',
@@ -131,13 +118,12 @@ export const cookieConsentConfig: CookieConsentConfig = {
     sameSite: 'Lax',
   },
 
-  // UI Einstellungen
   guiOptions: {
     consentModal: {
       layout: 'box wide',
       position: 'bottom right',
       equalWeightButtons: true,
-      flipButtons: false
+      flipButtons: false,
     },
     preferencesModal: {
       layout: 'box',
@@ -147,48 +133,52 @@ export const cookieConsentConfig: CookieConsentConfig = {
     },
   },
 
-  // Kategorien Definition
   categories: {
     necessary: {
       enabled: true,
       readOnly: true,
     },
     analytics: {
-      enabled: false, // Standardmäßig AUS (Opt-in für DSGVO)
+      enabled: false, // WICHTIG: Standardmäßig AUS (Opt-in für DSGVO!)
       autoClear: {
         cookies: [
+          { name: /^_ga/, domain: '.byteserv.it' },
           { name: /^_ga/ },
+          { name: '_gid', domain: '.byteserv.it' },
           { name: '_gid' },
+          { name: '_gat', domain: '.byteserv.it' },
           { name: '_gat' },
+          { name: /^_gcl/, domain: '.byteserv.it' },
           { name: /^_gcl/ },
         ],
+        reloadPage: true,
       },
     },
   },
 
-  // Event Callbacks - Consent Mode v2 Integration
+  // DSGVO-konform: Script NUR bei Zustimmung laden
   onFirstConsent: ({ cookie }) => {
-    const analyticsAccepted = cookie.categories.includes('analytics');
-    updateGtagConsent(analyticsAccepted);
+    if (cookie.categories.includes('analytics')) {
+      loadGoogleAnalytics();
+    }
   },
 
   onConsent: ({ cookie }) => {
-    const analyticsAccepted = cookie.categories.includes('analytics');
-    updateGtagConsent(analyticsAccepted);
+    if (cookie.categories.includes('analytics')) {
+      loadGoogleAnalytics();
+    }
   },
 
   onChange: ({ cookie, changedCategories }) => {
     if (changedCategories.includes('analytics')) {
-      const analyticsAccepted = cookie.categories.includes('analytics');
-      updateGtagConsent(analyticsAccepted);
-
-      if (!analyticsAccepted) {
+      if (cookie.categories.includes('analytics')) {
+        loadGoogleAnalytics();
+      } else {
         removeGoogleAnalyticsCookies();
       }
     }
   },
 
-  // Deutsche Spracheinstellungen
   language: {
     default: 'de',
     translations: {
@@ -220,7 +210,7 @@ export const cookieConsentConfig: CookieConsentConfig = {
             },
             {
               title: 'Analyse & Statistik',
-              description: 'Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren. Wir verwenden Google Analytics mit aktiviertem Consent Mode v2 und IP-Anonymisierung für maximalen Datenschutz.',
+              description: 'Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren. Wir verwenden Google Analytics 4 mit IP-Anonymisierung, deaktivierten Google Signals und eingeschränkter Datenverarbeitung.',
               linkedCategory: 'analytics',
               cookieTable: {
                 headers: {
@@ -232,21 +222,21 @@ export const cookieConsentConfig: CookieConsentConfig = {
                 body: [
                   {
                     name: '_ga',
-                    domain: 'byteserv.it',
+                    domain: '.byteserv.it',
                     expiration: '2 Jahre',
-                    description: 'Speichert eine eindeutige ID zur Unterscheidung von Nutzern',
+                    description: 'Unterscheidet einzelne Nutzer',
                   },
                   {
                     name: '_ga_*',
-                    domain: 'byteserv.it',
+                    domain: '.byteserv.it',
                     expiration: '2 Jahre',
-                    description: 'Speichert den Sitzungsstatus',
+                    description: 'Speichert Sitzungsstatus',
                   },
                   {
                     name: '_gid',
-                    domain: 'byteserv.it',
+                    domain: '.byteserv.it',
                     expiration: '24 Stunden',
-                    description: 'Speichert eine eindeutige ID zur Unterscheidung von Nutzern',
+                    description: 'Unterscheidet einzelne Nutzer',
                   },
                 ],
               },
@@ -266,5 +256,6 @@ export const cookieConsentConfig: CookieConsentConfig = {
 declare global {
   interface Window {
     dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 }
