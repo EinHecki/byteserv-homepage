@@ -306,6 +306,7 @@ export default function Home() {
                 "HECKEL_logo.png",
                 "Partner-Tech_Logo.png",
             ]}
+            animationSpeed={35}
         />
 
       {/* Contact Section */}
