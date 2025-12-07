@@ -1,6 +1,6 @@
-# ByteServ IT Solutions - Homepage
+# ByteServ - Homepage
 
-Eine moderne, professionelle Website für ByteServ IT Solutions - Ihr Partner für IT-Lösungen, Kassensysteme und digitale Gastro-Lösungen.
+Eine moderne, professionelle Website für ByteServ - Ihr Partner für IT-Lösungen, Kassensysteme und digitale Gastro-Lösungen.
 
 ## Features
 
@@ -318,4 +318,4 @@ server {
 
 ---
 
-Built with ❤️ for ByteServ IT Solutions using React Router.
+Built with ❤️ for ByteServ using React Router.

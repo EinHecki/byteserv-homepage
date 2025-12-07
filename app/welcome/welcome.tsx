@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
+import Testimonials from "~/components/Testimonials";
+import LogoCarousel from "~/components/LogoCarousel";
 
 export function Welcome() {
     const [consent, setConsent] = useState(false);
@@ -103,7 +105,7 @@ export function Welcome() {
                                className="px-8 py-4 border-2 border-white/20 rounded-full font-semibold hover:bg-white/10 transition-all duration-300">
                                 Unsere Leistungen
                             </a>
-                            <a href="tel:+491234567890"
+                            <a href="tel:+4922897278840"
                                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-sky-600 rounded-full font-semibold hover:from-blue-700 hover:to-sky-700 transition-all duration-300">
                                 Jetzt anrufen!
                             </a>
@@ -648,8 +650,14 @@ export function Welcome() {
                 </div>
             </section>
 
+            {/* Testimonials Section */}
+            <Testimonials />
+
+            {/* Logo Carousel Section */}
+            <LogoCarousel />
+
             {/* Contact Section */}
-            <section id="contact" className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
+            <section id="contact" className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
                 <div className="max-w-5xl mx-auto">
                     <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-center">Jetzt kontaktieren!</h2>
                     <p className="text-xl text-gray-400 text-center mb-16">
@@ -671,8 +679,8 @@ export function Welcome() {
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <span className="text-2xl">📞</span>
-                                    <a href="tel:+491234567890"
-                                       className="text-lg underline decoration-white/40 hover:decoration-white">+49 123 456 7890</a>
+                                    <a href="tel:+4922897278840"
+                                       className="text-lg underline decoration-white/40 hover:decoration-white">0228 9727884-0</a>
                                 </div>
                             </div>
 

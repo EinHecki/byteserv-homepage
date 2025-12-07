@@ -3,26 +3,55 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "Digitale Gastro-Lösungen | Restaurant Software Bonn - ByteServ";
+  const description = "Digitalisieren Sie Ihren Gastro-Betrieb: Tischreservierung, Self-Order, digitale Speisekarten & HACCP. Ihr Partner in Bonn, Köln & NRW.";
+  const url = "https://byteserv.it/digitale-gastro";
+  const image = "https://byteserv.it/og-image.png";
+
   return [
-    { title: "Digitale Gastro - ByteServ IT Solutions" },
-    { name: "description", content: "Digitale Lösungen für Restaurants: Tischreservierung, Self-Order-Systeme, digitale Speisekarten, Gutscheine und HACCP-Protokollierung." },
-    { name: "keywords", content: "Digitale Gastronomie, Tischreservierung, Self-Order, QR-Code Bestellung, Digitale Speisekarte, Restaurant Software" },
+    { title },
+    { name: "description", content: description },
+    { name: "keywords", content: "Digitale Gastronomie Bonn, Tischreservierung System, Self-Order Restaurant, QR-Code Bestellung, Digitale Speisekarte NRW, Restaurant Software Köln, HACCP digital" },
+
+    // Open Graph
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:site_name", content: "ByteServ" },
+    { property: "og:locale", content: "de_DE" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // SEO
+    { name: "robots", content: "index, follow" },
   ];
 }
 
+export const links: Route.LinksFunction = () => [
+  { rel: "canonical", href: "https://byteserv.it/digitale-gastro" },
+];
+
 export default function DigitaleGastro() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Header />
 
-      <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Hero */}
-          <div className="text-center mb-20">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 pb-2 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent leading-tight">
+          <div className="text-center mb-12 sm:mb-20">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-6 pb-2 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent leading-tight break-words">
               Digitale Gastronomie
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-xl lg:text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed break-words">
               Ein Restaurant ist ein Ort, an dem Menschen zusammenkommen, ob jung und alt, mit Freunden oder mit der ganzen Familie.
               Damit Sie sich voll und ganz auf Ihre Gäste konzentrieren können, sorgen unsere digitalen Lösungen dafür,
               dass alles reibungslos funktioniert.
@@ -30,11 +59,11 @@ export default function DigitaleGastro() {
           </div>
 
           {/* Intro Quote */}
-          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 mb-16 text-center">
-            <p className="text-2xl text-white font-semibold mb-4">
+          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 mb-12 sm:mb-16 text-center overflow-hidden">
+            <p className="text-lg sm:text-2xl text-white font-semibold mb-4 break-words">
               Von dem ersten Kontakt mit dem Gast bis zum Abschied mit einem zufriedenen Lächeln am Tisch.
             </p>
-            <p className="text-lg text-gray-400">
+            <p className="text-base sm:text-lg text-gray-400 break-words">
               Angefangen von dem ersten Kontakt mit dem Gast bis zum Abschied mit einem zufriedenen Lächeln am Tisch.
             </p>
           </div>
@@ -42,39 +71,39 @@ export default function DigitaleGastro() {
           {/* Features */}
           <div className="space-y-8 mb-16">
             {/* Tischreservierung */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 hover:bg-white/10 transition-all duration-300">
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="text-5xl mb-4">📅</div>
-                  <h2 className="text-3xl font-bold mb-4">Digitale Tischreservierungssysteme</h2>
-                  <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 hover:bg-white/10 transition-all duration-300 overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+                <div className="min-w-0">
+                  <div className="text-4xl sm:text-5xl mb-4">📅</div>
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 break-words hyphens-auto" lang="de">Digitale Tisch&shy;reservierungs&shy;systeme</h2>
+                  <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed break-words">
                     Gastfreundschaft beginnt bereits vor dem ersten Besuch in Ihrem Lokal. Bieten Sie mit uns
-                    Ihren Gästen eine einfache und schnelle Möglichkeit zur Tischreservierung online.
+                    Ihren Gästen eine einfache und schnelle Möglichkeit zur Tisch&shy;reservierung online.
                     Verwalten Sie kinderleicht Ihre freien Plätze und reduzieren gleichzeitig den Aufwand für Ihr Personal.
                   </p>
                 </div>
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <h3 className="font-semibold text-white mb-4 text-xl">Die wichtigsten Vorteile im Überblick</h3>
-                  <ul className="space-y-3 text-gray-300">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 min-w-0">
+                  <h3 className="font-semibold text-white mb-4 text-lg sm:text-xl">Die wichtigsten Vorteile im Überblick</h3>
+                  <ul className="space-y-3 text-gray-300 text-sm sm:text-base">
                     <li className="flex items-start gap-3">
-                      <span className="text-green-400 mt-1 text-xl">✓</span>
-                      <span>Schnelle und einfache Planung der Reservierungen</span>
+                      <span className="text-green-400 mt-0.5 text-lg sm:text-xl flex-shrink-0">✓</span>
+                      <span className="break-words">Schnelle und einfache Planung der Reservierungen</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-green-400 mt-1 text-xl">✓</span>
-                      <span>Multikanalfähigkeit: Gäste können online, über Ihre Webseite, Telefon, KI Assistenten oder persönlich vor Ort einen Tisch reservieren</span>
+                      <span className="text-green-400 mt-0.5 text-lg sm:text-xl flex-shrink-0">✓</span>
+                      <span className="break-words">Multikanal&shy;fähigkeit: Gäste können online, über Ihre Webseite, Telefon, KI Assistenten oder persönlich vor Ort einen Tisch reservieren</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-green-400 mt-1 text-xl">✓</span>
-                      <span>Erinnerungen und Bestätigungen: Vermeidung von „No-Shows" in Ihrem Restaurant</span>
+                      <span className="text-green-400 mt-0.5 text-lg sm:text-xl flex-shrink-0">✓</span>
+                      <span className="break-words">Erinnerungen und Bestätigungen: Vermeidung von „No-Shows" in Ihrem Restaurant</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-green-400 mt-1 text-xl">✓</span>
-                      <span>Einfache Verwaltung an einem Ort inkl. Dynamischer Tischplanung</span>
+                      <span className="text-green-400 mt-0.5 text-lg sm:text-xl flex-shrink-0">✓</span>
+                      <span className="break-words">Einfache Verwaltung an einem Ort inkl. Dynamischer Tischplanung</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-green-400 mt-1 text-xl">✓</span>
-                      <span>Auf Wunsch mit Vorbestellung von Gerichten oder Menüs</span>
+                      <span className="text-green-400 mt-0.5 text-lg sm:text-xl flex-shrink-0">✓</span>
+                      <span className="break-words">Auf Wunsch mit Vorbestellung von Gerichten oder Menüs</span>
                     </li>
                   </ul>
                 </div>
@@ -82,23 +111,23 @@ export default function DigitaleGastro() {
             </div>
 
             {/* Digitale Kreidetafeln */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 hover:bg-white/10 transition-all duration-300">
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="order-2 lg:order-1 bg-white/5 border border-white/10 rounded-2xl p-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 hover:bg-white/10 transition-all duration-300 overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+                <div className="order-2 lg:order-1 bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 min-w-0">
                   <img
                     src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
                     alt="Digitale Displays"
                     className="w-full rounded-xl"
                   />
                 </div>
-                <div className="order-1 lg:order-2">
-                  <div className="text-5xl mb-4">📺</div>
-                  <h2 className="text-3xl font-bold mb-4">Digitale Kreidetafeln</h2>
-                  <p className="text-gray-300 text-lg mb-4 leading-relaxed">
+                <div className="order-1 lg:order-2 min-w-0">
+                  <div className="text-4xl sm:text-5xl mb-4">📺</div>
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 break-words">Digitale Kreidetafeln</h2>
+                  <p className="text-gray-300 text-base sm:text-lg mb-4 leading-relaxed break-words">
                     Sie haben oft wechselnde Angebote oder möchten auf zeitlich begrenzte Aktionen
                     (wie z.B. die Happy Hour) in Ihrem Restaurant aufmerksam machen?
                   </p>
-                  <p className="text-gray-300 text-lg leading-relaxed">
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed break-words">
                     Wir bieten die digitale Alternative zur klassischen Kreidetafel und bieten eine
                     TV Bildschirm basierte Alternative. Sie können sowohl im Restaurant als auch im Internet
                     mit Ihren Produkten und Ihren tagesaktuellen Angeboten werben. Nutzen Sie hier für die
@@ -109,95 +138,95 @@ export default function DigitaleGastro() {
             </div>
 
             {/* Self-Order */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 hover:bg-white/10 transition-all duration-300">
-              <div className="text-center mb-8">
-                <div className="text-5xl mb-4">📱</div>
-                <h2 className="text-3xl font-bold mb-4">Self-Order und Take-Away</h2>
-                <p className="text-xl text-white font-semibold mb-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 hover:bg-white/10 transition-all duration-300 overflow-hidden">
+              <div className="text-center mb-6 sm:mb-8">
+                <div className="text-4xl sm:text-5xl mb-4">📱</div>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4">Self-Order und Take-Away</h2>
+                <p className="text-lg sm:text-xl text-white font-semibold mb-6">
                   Ihre Gäste möchten direkt am Tisch bestellen? Kein Problem!
                 </p>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-8 mb-8">
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <h3 className="text-xl font-bold mb-4 text-white">QR-Code Bestellung am Tisch</h3>
-                  <p className="text-gray-300 mb-4 leading-relaxed">
+              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-8">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">QR-Code Bestellung am Tisch</h3>
+                  <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed break-words">
                     Mit unserer Self-Order-Lösung ermöglichen Sie eine bequeme, selbstständige Bestellung
                     inklusive Zahlung am Platz. Dafür stellen wir Ihren Gästen ein digitales Abbild Ihrer
                     Speisekarte bereit.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-300">
                     <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">✓</span>
+                      <span className="text-green-400 mt-0.5 flex-shrink-0">✓</span>
                       <span>Auf Wunsch in mehreren Sprachen</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">✓</span>
+                      <span className="text-green-400 mt-0.5 flex-shrink-0">✓</span>
                       <span>Automatisch gepflegt</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">✓</span>
+                      <span className="text-green-400 mt-0.5 flex-shrink-0">✓</span>
                       <span>Intuitive Bedienung</span>
                     </li>
                   </ul>
-                  <p className="text-gray-400 text-sm mt-4">
-                    Ideal für große Außenbereiche, Biergärten oder weitläufige Gastronomieflächen
+                  <p className="text-gray-400 text-sm mt-4 break-words">
+                    Ideal für große Außenbereiche, Biergärten oder weitläufige Gastronomie&shy;flächen
                   </p>
                 </div>
 
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <h3 className="text-xl font-bold mb-4 text-white">Self-Order-Kioske</h3>
-                  <p className="text-gray-300 mb-4 leading-relaxed">
-                    Alternativ bieten wir unsere Self-Order-Kioske an: zentrale Bestellstationen mit Touchscreen,
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 text-white break-words">Self-Order-Kioske</h3>
+                  <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed break-words">
+                    Alternativ bieten wir unsere Self-Order-Kioske an: zentrale Bestell&shy;stationen mit Touchscreen,
                     an denen Ihre Gäste ihre Bestellung eigenständig aufgeben können – modern, effizient und unkompliziert.
                   </p>
-                  <p className="text-white font-semibold mt-4">
+                  <p className="text-white font-semibold mt-4 text-sm sm:text-base break-words">
                     Beide Systeme lassen sich auch für den Take-Away-Betrieb nutzen!
                   </p>
-                  <p className="text-gray-300 text-sm mt-2">
+                  <p className="text-gray-300 text-sm mt-2 break-words">
                     Gäste bestellen und bezahlen digital, erhalten eine Abholnummer und können ihre Bestellung einfach mitnehmen.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-white/10 rounded-2xl p-6">
-                <p className="text-lg text-white font-semibold">
+              <div className="text-center bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-white/10 rounded-2xl p-4 sm:p-6">
+                <p className="text-base sm:text-lg text-white font-semibold">
                   So sparen Sie Zeit, entlasten Ihr Team und schaffen gleichzeitig ein rundum zeitgemäßes Gästeerlebnis.
                 </p>
               </div>
             </div>
 
             {/* Gutscheine */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 hover:bg-white/10 transition-all duration-300">
-              <div className="text-5xl mb-4">🎁</div>
-              <h2 className="text-3xl font-bold mb-4">Digitale Gutscheine</h2>
-              <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                Gutscheine für einen Restaurantbesuch sind immer ein besonderes Geschenk für die Liebsten eines Gasts.
-                Verwalten Sie mit unserer Gutscheinlösung digital Ihre physischen und digitalen Gutscheine.
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 hover:bg-white/10 transition-all duration-300 overflow-hidden">
+              <div className="text-4xl sm:text-5xl mb-4">🎁</div>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 break-words">Digitale Gutscheine</h2>
+              <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed break-words">
+                Gutscheine für einen Restaurant&shy;besuch sind immer ein besonderes Geschenk für die Liebsten eines Gasts.
+                Verwalten Sie mit unserer Gutschein&shy;lösung digital Ihre physischen und digitalen Gutscheine.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <p className="text-gray-300 mb-4">
+                <div className="min-w-0">
+                  <p className="text-gray-300 text-sm sm:text-base mb-4 break-words">
                     Verwalten, verkaufen oder erstellen Sie Ihre Gutscheine selbst, direkt über die Webseite oder vor Ort.
                   </p>
-                  <p className="text-white font-semibold">
-                    Ob als Geschenk, Treuebonus oder als Promoaktion: Die Gutscheine sind mit unseren Kassensystemen verknüpft.
+                  <p className="text-white font-semibold text-sm sm:text-base break-words">
+                    Ob als Geschenk, Treuebonus oder als Promoaktion: Die Gutscheine sind mit unseren Kassen&shy;systemen verknüpft.
                   </p>
                 </div>
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 min-w-0">
                   <p className="text-white font-semibold mb-2">Ihre Vorteile:</p>
                   <ul className="space-y-2 text-gray-300 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">✓</span>
-                      <span>Kein Chaos in Tabellen und Datenbanken</span>
+                      <span className="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+                      <span className="break-words">Kein Chaos in Tabellen und Datenbanken</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">✓</span>
-                      <span>Einfache und praktikable Lösungen</span>
+                      <span className="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+                      <span className="break-words">Einfache und praktikable Lösungen</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">✓</span>
-                      <span>Automatische Verwaltung und Einlösung</span>
+                      <span className="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+                      <span className="break-words">Automatische Verwaltung und Einlösung</span>
                     </li>
                   </ul>
                 </div>
@@ -205,32 +234,32 @@ export default function DigitaleGastro() {
             </div>
 
             {/* HACCP */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 hover:bg-white/10 transition-all duration-300">
-              <div className="text-5xl mb-4">📋</div>
-              <h2 className="text-3xl font-bold mb-4">Digitale Protokollierung / HACCP</h2>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Nehmen Sie Abschied von Papier und Stift und verwalten Sie Reinigungsprozesse und
-                Temperaturprotokollierung digital. Mit vorgefertigten Checklisten und sicherer Speicherung in der Cloud.
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 hover:bg-white/10 transition-all duration-300 overflow-hidden">
+              <div className="text-4xl sm:text-5xl mb-4">📋</div>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 break-words">Digitale Protokollierung / HACCP</h2>
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed break-words">
+                Nehmen Sie Abschied von Papier und Stift und verwalten Sie Reinigungs&shy;prozesse und
+                Temperatur&shy;protokollierung digital. Mit vorgefertigten Checklisten und sicherer Speicherung in der Cloud.
               </p>
             </div>
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 text-center">
-            <h3 className="text-2xl font-bold mb-4">Sprechen Sie uns gern an!</h3>
-            <p className="text-gray-300 mb-6 text-lg">
+          <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 text-center overflow-hidden">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 break-words">Sprechen Sie uns gern an!</h3>
+            <p className="text-gray-300 mb-6 text-base sm:text-lg break-words">
               Wir beraten Sie ausführlich zu allen digitalen Gastro-Lösungen und finden die perfekte Kombination für Ihren Betrieb.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/#contact"
-                className="px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
               >
                 Jetzt anfragen
               </a>
               <a
                 href="/kassensysteme"
-                className="px-8 py-4 border-2 border-white/20 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/20 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
               >
                 Kassensysteme ansehen
               </a>

@@ -8,7 +8,16 @@
       "Bash(npm run dev:*)",
       "Bash(timeout 15 npm run dev:*)",
       "Bash(timeout 10 npm run start:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(copy favicon.png publicfavicon.png)",
+      "Bash(curl:*)",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:byteserv.de)",
+      "Bash(node scripts/generate-sitemap.js:*)"
     ],
     "deny": [],
     "ask": []
