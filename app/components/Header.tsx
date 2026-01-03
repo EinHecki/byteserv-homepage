@@ -2,15 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router";
 
 function Header() {
-
-    const headerLinks = [
-        { href: "/", label: "Home" },
-        { href: "/kassensysteme", label: "Kassensysteme" },
-        { href: "/digitale-gastro", label: "Digitale Gastro" },
-        { href: "/webentwicklung", label: "Webentwicklung" },
-        { href: "/it-systeme", label: "IT-Systeme" },
-        { href: "/#contact", label: "Kontakt" },
-    ];
+  const headerLinks = [
+    { href: "/", label: "Home" },
+    { href: "/kassensysteme", label: "Kassensysteme" },
+    { href: "/digitale-gastro", label: "Digitale Gastro" },
+    { href: "/webentwicklung", label: "Webentwicklung" },
+    { href: "/it-systeme", label: "IT-Systeme" },
+    { href: "/#contact", label: "Kontakt" },
+  ];
 
   const [open, setOpen] = useState(false);
   return (
@@ -22,7 +21,7 @@ function Header() {
             <img
               src="/logo-low_height.png"
               alt="ByteServ Logo"
-              className="h-8"
+              className="h-8 w-auto"
               loading="eager"
               width={120}
               height={32}
@@ -31,15 +30,15 @@ function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
-              {headerLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      to={link.href}
-                      className="text-sm font-semibold text-white/80 hover:text-white transition-colors"
-                    >
-                        {link.label}
-                    </Link>
-              ))}
+            {headerLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm font-semibold text-white/80 hover:text-white transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile Toggle */}
@@ -75,16 +74,16 @@ function Header() {
           }`}
         >
           <nav className="flex flex-col gap-2 pt-4 border-t border-white/10">
-              {headerLinks.map((link) => (
-                <Link
-                  onClick={() => setOpen(false)}
-                  key={link.href}
-                  className="px-4 py-2.5 rounded-lg hover:bg-white/10 transition-colors text-white/80 hover:text-white font-semibold"
-                  to={link.href}
-                >
-                    {link.label}
-                </Link>
-              ))}
+            {headerLinks.map((link) => (
+              <Link
+                onClick={() => setOpen(false)}
+                key={link.href}
+                className="px-4 py-2.5 rounded-lg hover:bg-white/10 transition-colors text-white/80 hover:text-white font-semibold"
+                to={link.href}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
       </header>
