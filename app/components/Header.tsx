@@ -23,6 +23,9 @@ function Header() {
               src="/logo-low_height.png"
               alt="ByteServ Logo"
               className="h-8"
+              loading="eager"
+              width={120}
+              height={32}
             />
           </Link>
 

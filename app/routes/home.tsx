@@ -1,9 +1,19 @@
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
-import { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import PageLayout from "~/components/PageLayout";
 import LogoCarousel from "~/components/LogoCarousel";
+import ContactForm from "~/components/ContactForm";
+import ServiceCard from "~/components/ServiceCard";
+import {
+  IconPOS,
+  IconRestaurant,
+  IconCode,
+  IconServer,
+  IconTarget,
+  IconRocket,
+  IconHandshake,
+  IconArrowRight,
+} from "~/components/icons";
 
 export function meta({}: Route.MetaArgs) {
   const title = "IT & Kassensysteme Bonn | Gastronomie & Mittelstand - ByteServ";
@@ -53,9 +63,7 @@ export const links: LinksRoute.LinksFunction = () => [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <Header />
-
+    <PageLayout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-32 pb-20 overflow-hidden">
         {/* Dezente Gradient Background */}
@@ -95,7 +103,7 @@ export default function Home() {
             >
               <span className="flex items-center justify-center gap-2">
                 Unsere Leistungen
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </a>
             <a
@@ -104,17 +112,9 @@ export default function Home() {
             >
               <span className="flex items-center justify-center gap-2">
                 Kontakt aufnehmen
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </a>
-          </div>
-
-          {/* Floating Icons */}
-          <div className="absolute inset-0 pointer-events-none hidden lg:block">
-            <div className="absolute top-1/4 left-10 text-4xl opacity-20 animate-float" style={{ animationDelay: '0s' }}>💳</div>
-            <div className="absolute top-1/3 right-10 text-4xl opacity-20 animate-float" style={{ animationDelay: '1s' }}>🍽️</div>
-            <div className="absolute bottom-1/4 left-20 text-4xl opacity-20 animate-float" style={{ animationDelay: '2s' }}>💻</div>
-            <div className="absolute bottom-1/3 right-20 text-4xl opacity-20 animate-float" style={{ animationDelay: '3s' }}>🖥️</div>
           </div>
         </div>
       </section>
@@ -133,125 +133,54 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {/* Kassensysteme */}
-            <Link
+            <ServiceCard
               to="/kassensysteme"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
-            >
-              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">💳</div>
-              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Kassen&shy;systeme</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
-                Moderne POS-Systeme für Gastronomie und Einzelhandel – stationär, mobil oder als Cloud-Lösung.
-                TSE-konform und zukunftssicher.
-              </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Stationäre Kassen&shy;systeme</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Mobile Touch-Systeme</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Cloud-Anbindung</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">TSE-zertifiziert</span>
-                </li>
-              </ul>
-              <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
-                Mehr erfahren <span>→</span>
-              </div>
-            </Link>
-
-            {/* Digitale Gastro */}
-            <Link
+              icon={<IconPOS size={48} />}
+              title="Kassensysteme"
+              description="Moderne POS-Systeme für Gastronomie und Einzelhandel – stationär, mobil oder als Cloud-Lösung. TSE-konform und zukunftssicher."
+              features={[
+                "Stationäre Kassensysteme",
+                "Mobile Touch-Systeme",
+                "Cloud-Anbindung",
+                "TSE-zertifiziert",
+              ]}
+            />
+            <ServiceCard
               to="/digitale-gastro"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
-            >
-              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">🍽️</div>
-              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Digitale Gastro</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
-                Optimieren Sie Ihren Gastro-Betrieb mit digitalen Lösungen: Online-Reservierung,
-                Self-Order-Systeme, digitale Kreidetafeln und mehr.
-              </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Tisch&shy;reservierungs&shy;systeme</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Self-Order Terminals</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Digitale Speise&shy;karten</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">HACCP-Protokolle</span>
-                </li>
-              </ul>
-              <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
-                Mehr erfahren <span>→</span>
-              </div>
-            </Link>
-
-            {/* Webentwicklung */}
-            <Link
+              icon={<IconRestaurant size={48} />}
+              title="Digitale Gastro"
+              description="Optimieren Sie Ihren Gastro-Betrieb mit digitalen Lösungen: Online-Reservierung, Self-Order-Systeme, digitale Kreidetafeln und mehr."
+              features={[
+                "Tischreservierungssysteme",
+                "Self-Order Terminals",
+                "Digitale Speisekarten",
+                "HACCP-Protokolle",
+              ]}
+            />
+            <ServiceCard
               to="/webentwicklung"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
-            >
-              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">💻</div>
-              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Web&shy;entwicklung</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
-                Professionelle Websites und Web-Anwendungen – modern, schnell und SEO-optimiert.
-                Von der Visitenkarte bis zum komplexen Liefer&shy;system.
-              </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Individuelle Websites</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Online-Shops</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Liefer&shy;systeme</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">SEO & Performance</span>
-                </li>
-              </ul>
-              <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
-                Mehr erfahren <span>→</span>
-              </div>
-            </Link>
-
-            {/* IT-Systeme */}
-            <Link
+              icon={<IconCode size={48} />}
+              title="Webentwicklung"
+              description="Professionelle Websites und Web-Anwendungen – modern, schnell und SEO-optimiert. Von der Visitenkarte bis zum komplexen Liefersystem."
+              features={[
+                "Individuelle Websites",
+                "Online-Shops",
+                "Liefersysteme",
+                "SEO & Performance",
+              ]}
+            />
+            <ServiceCard
               to="/it-systeme"
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:border-white/20 overflow-hidden min-w-0"
-            >
-              <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">🖥️</div>
-              <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">IT-Systeme</h3>
-              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed break-words">
-                Rundum-IT-Betreuung für Ihr Unternehmen: Netzwerk, Hardware, Cloud-Lösungen,
-                Support und Sicherheit – alles aus einer Hand.
-              </p>
-              <ul className="space-y-2 text-gray-300 mb-4 sm:mb-6 text-xs sm:text-base">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Netzwerk&shy;technik & WLAN</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Hardware & Support</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Cloud & Hosting</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400 flex-shrink-0">✓</span> <span className="break-words">Video&shy;überwachung</span>
-                </li>
-              </ul>
-              <div className="text-blue-400 font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2 text-sm sm:text-base">
-                Mehr erfahren <span>→</span>
-              </div>
-            </Link>
+              icon={<IconServer size={48} />}
+              title="IT-Systeme"
+              description="Rundum-IT-Betreuung für Ihr Unternehmen: Netzwerk, Hardware, Cloud-Lösungen, Support und Sicherheit – alles aus einer Hand."
+              features={[
+                "Netzwerktechnik & WLAN",
+                "Hardware & Support",
+                "Cloud & Hosting",
+                "Videoüberwachung",
+              ]}
+            />
           </div>
         </div>
       </section>
@@ -270,7 +199,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden min-w-0">
-              <div className="text-3xl sm:text-5xl mb-4">🎯</div>
+              <div className="mb-4 text-blue-400">
+                <IconTarget size={40} />
+              </div>
               <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Branchen&shy;kenntnis</h3>
               <p className="text-gray-400 text-sm sm:text-base leading-relaxed break-words">
                 Spezialisiert auf Gastronomie und Mittelstand verstehen wir Ihre spezifischen
@@ -279,7 +210,9 @@ export default function Home() {
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden min-w-0">
-              <div className="text-3xl sm:text-5xl mb-4">🚀</div>
+              <div className="mb-4 text-purple-400">
+                <IconRocket size={40} />
+              </div>
               <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Moderne Technologie</h3>
               <p className="text-gray-400 text-sm sm:text-base leading-relaxed break-words">
                 Wir setzen auf zukunfts&shy;sichere Lösungen mit modernsten Technologien –
@@ -288,7 +221,9 @@ export default function Home() {
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden min-w-0">
-              <div className="text-3xl sm:text-5xl mb-4">🤝</div>
+              <div className="mb-4 text-green-400">
+                <IconHandshake size={40} />
+              </div>
               <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 pb-1 leading-tight break-words">Persönlicher Support</h3>
               <p className="text-gray-400 text-sm sm:text-base leading-relaxed break-words">
                 Von der Beratung über die Implementierung bis zum laufenden Support –
@@ -324,265 +259,6 @@ export default function Home() {
           <ContactForm />
         </div>
       </section>
-
-      <Footer />
-    </div>
-  );
-}
-
-function ContactForm() {
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [emailTouched, setEmailTouched] = useState(false);
-  const [emailError, setEmailError] = useState<string | null>(null);
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [message, setMessage] = useState("");
-
-  // Real-time email validation
-  useEffect(() => {
-    if (emailTouched && email) {
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setEmailError("Ungültige E-Mail-Adresse");
-      } else {
-        setEmailError(null);
-      }
-    }
-  }, [email, emailTouched]);
-
-  const resetForm = () => {
-    setFullName("");
-    setEmail("");
-    setMessage("");
-    setEmailTouched(false);
-    setEmailError(null);
-    setError(null);
-    setShowConfetti(false);
-    setSubmitted(false);
-  };
-
-  if (submitted) {
-    return (
-      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden">
-        {/* Confetti Animation */}
-        {showConfetti && (
-          <div className="absolute inset-0 pointer-events-none z-50">
-            {[...Array(50)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute animate-confetti"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: '-10px',
-                  animationDelay: `${Math.random() * 0.5}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`,
-                }}
-              >
-                <div
-                  className="w-2 h-2 rounded-full"
-                  style={{
-                    backgroundColor: ['#10b981', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6'][Math.floor(Math.random() * 5)],
-                    transform: `rotate(${Math.random() * 360}deg)`,
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="text-center">
-          <div className="text-6xl mb-6 animate-[bounce_1s_ease-in-out_3]">🎉</div>
-          <h3 className="text-3xl font-bold mb-4 text-emerald-100">Vielen Dank!</h3>
-          <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-            Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns in der Regel innerhalb von 24 Stunden bei Ihnen.
-          </p>
-          <div className="flex items-center justify-center gap-2 text-emerald-300 text-sm mb-8">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span>E-Mail-Bestätigung wird versendet</span>
-          </div>
-          <button
-            onClick={resetForm}
-            className="text-emerald-300 hover:text-emerald-200 underline decoration-emerald-400/40 hover:decoration-emerald-300 transition-colors"
-          >
-            ← Weitere Anfrage senden
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        setError(null);
-        setLoading(true);
-
-        const data = {
-          fullName,
-          email,
-          message,
-        };
-
-        try {
-          const response = await fetch("/api/contact/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          });
-
-          if (!response.ok) {
-            const result = await response.json().catch(() => ({}));
-            throw new Error(result?.error || "Fehler beim Senden. Bitte versuchen Sie es später erneut.");
-          }
-
-          // Success!
-          setSubmitted(true);
-          setShowConfetti(true);
-          setFullName("");
-          setEmail("");
-          setMessage("");
-          setEmailTouched(false);
-
-          // Hide confetti after animation
-          setTimeout(() => setShowConfetti(false), 4000);
-        } catch (err: any) {
-          setError(err?.message || "Es gab ein Problem beim Versenden. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.");
-        } finally {
-          setLoading(false);
-        }
-      }}
-    >
-      <div className="space-y-5 sm:space-y-6">
-        {/* Name Field */}
-        <div>
-          <label htmlFor="fullName" className="block text-sm font-semibold mb-2">
-            Name *
-          </label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            required
-            disabled={loading}
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400 text-white placeholder:text-gray-500 transition-all duration-200"
-            placeholder="Ihr vollständiger Name"
-          />
-        </div>
-
-        {/* Email Field with Inline Validation */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-semibold mb-2">
-            E-Mail *
-          </label>
-          <div className="relative">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              disabled={loading}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onBlur={() => setEmailTouched(true)}
-              className={`w-full px-4 py-3 bg-white/5 border rounded-xl focus:outline-none focus:ring-2 text-white placeholder:text-gray-500 transition-all duration-200 ${
-                emailError
-                  ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
-                  : emailTouched && email && !emailError
-                  ? 'border-green-400 focus:border-green-400 focus:ring-green-400/20'
-                  : 'border-white/10 focus:border-blue-400 focus:ring-blue-400/50'
-              }`}
-              placeholder="ihre@email.de"
-            />
-            {emailTouched && email && (
-              <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                {emailError ? (
-                  <div className="text-red-400">✕</div>
-                ) : (
-                  <div className="text-green-400 animate-[scaleIn_0.2s_ease-out]">✓</div>
-                )}
-              </div>
-            )}
-            {emailError && emailTouched && (
-              <p className="text-red-400 text-xs mt-1 ml-1 animate-[slideDown_0.2s_ease-out]">{emailError}</p>
-            )}
-          </div>
-        </div>
-
-        {/* Message Field */}
-        <div>
-          <label htmlFor="message" className="block text-sm font-semibold mb-2">
-            Nachricht *
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows={6}
-            disabled={loading}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400 text-white resize-none placeholder:text-gray-500 transition-all duration-200"
-            placeholder="Beschreiben Sie Ihr Anliegen..."
-          />
-        </div>
-
-        {/* Error Message */}
-        {error && (
-          <div className="rounded-xl border border-red-400/40 bg-red-500/20 backdrop-blur-sm p-4 animate-[shake_0.5s_ease-in-out]">
-            <div className="flex items-start gap-3">
-              <div className="text-xl flex-shrink-0 mt-0.5">⚠️</div>
-              <div>
-                <div className="font-semibold text-red-200 mb-1">Oops!</div>
-                <div className="text-sm text-red-100 leading-relaxed">{error}</div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading || !!emailError}
-          className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-semibold hover:from-blue-500 hover:to-purple-500 transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 group"
-        >
-          {loading ? (
-            <>
-              <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  fill="none"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              <span>Wird gesendet...</span>
-            </>
-          ) : (
-            <>
-              <span>Nachricht senden</span>
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </>
-          )}
-        </button>
-      </div>
-    </form>
+    </PageLayout>
   );
 }

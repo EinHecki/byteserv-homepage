@@ -9,7 +9,7 @@ interface LogoCarouselProps {
 export default function LogoCarousel({
   logoDirectory = "/logos/partners",
   logos,
-  animationSpeed = 20
+  animationSpeed = 35
 }: LogoCarouselProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -20,8 +20,8 @@ export default function LogoCarousel({
     "logo-placeholder-4.png",
   ];
 
-  // Create enough logos to fill viewport + one complete set for seamless loop
   const logoCount = inputLogos.length;
+  const setWidth = `calc((var(--logo-width) + var(--logo-gap)) * ${logoCount})`;
 
   const LogoImage = ({ logo, idx }: { logo: string; idx: number }) => (
     <li className="logo-slide">
@@ -29,6 +29,7 @@ export default function LogoCarousel({
         src={`${logoDirectory}/${logo}`}
         alt={`Partner Logo ${(idx % logoCount) + 1}`}
         className="logo-img"
+        loading="lazy"
         onError={(e) => {
           e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Crect width='200' height='100' rx='8' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239CA3AF' font-family='system-ui' font-size='14'%3EPartner%3C/text%3E%3C/svg%3E`;
         }}
@@ -53,10 +54,14 @@ export default function LogoCarousel({
           className="logo-carousel"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          style={{ "--set-width": setWidth } as React.CSSProperties}
         >
           <ul
-            className="logo-track"
-            style={{ animationPlayState: isHovered ? 'paused' : 'running' }}
+            className="logo-track logo-track-animated"
+            style={{
+              animationPlayState: isHovered ? 'paused' : 'running',
+              "--animation-speed": `${animationSpeed}s`,
+            } as React.CSSProperties}
           >
             {/* Render logos multiple times for seamless infinite effect */}
             {[...Array(4)].map((_, setIdx) =>
@@ -75,80 +80,6 @@ export default function LogoCarousel({
           Bewegen Sie die Maus über die Logos, um die Animation zu pausieren
         </p>
       </div>
-
-      <style>{`
-        .logo-carousel {
-          --logo-width: 160px;
-          --logo-gap: 56px;
-          --logo-count: ${logoCount};
-          --set-width: calc((var(--logo-width) + var(--logo-gap)) * var(--logo-count));
-
-          overflow: hidden;
-          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-          padding: 2rem 0;
-        }
-
-        .logo-track {
-          display: flex;
-          width: max-content;
-          animation: marquee ${animationSpeed}s linear infinite;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        .logo-slide {
-          flex-shrink: 0;
-          width: var(--logo-width);
-          height: 100px;
-          margin-right: var(--logo-gap);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .logo-img {
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain;
-          filter: grayscale(1);
-          opacity: 0.5;
-          transition: filter 0.3s, opacity 0.3s;
-          user-select: none;
-          pointer-events: none;
-        }
-
-        .logo-slide:hover .logo-img {
-          filter: grayscale(0);
-          opacity: 1;
-        }
-
-        @keyframes marquee {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(calc(var(--set-width) * -2));
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .logo-track {
-            animation: none;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .logo-carousel {
-            --logo-width: 120px;
-            --logo-gap: 40px;
-          }
-          .logo-slide {
-            height: 80px;
-          }
-        }
-      `}</style>
     </section>
   );
 }

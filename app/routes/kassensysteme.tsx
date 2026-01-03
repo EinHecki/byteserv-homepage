@@ -1,6 +1,6 @@
 import type { Route } from "./+types/kassensysteme";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import PageLayout from "~/components/PageLayout";
+import OptimizedImage from "~/components/OptimizedImage";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Kassensysteme Gastronomie & Einzelhandel | POS Bonn - ByteServ";
@@ -41,9 +41,7 @@ export const links: Route.LinksFunction = () => [
 
 export default function Kassensysteme() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <Header />
-
+    <PageLayout>
       <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Hero */}
@@ -77,7 +75,7 @@ export default function Kassensysteme() {
             {/* Stationäre Kassen */}
             <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 overflow-hidden">
               <div className="aspect-video rounded-2xl overflow-hidden mb-6">
-                <img
+                <OptimizedImage
                   src="/kassensystem-stationaer.jpg"
                   alt="Stationäre Kassensysteme"
                   className="w-full h-full object-cover"
@@ -107,7 +105,7 @@ export default function Kassensysteme() {
             {/* Mobile Systeme */}
             <div className="bg-gradient-to-br from-green-900/20 to-teal-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 overflow-hidden">
               <div className="aspect-video rounded-2xl overflow-hidden mb-6">
-                <img
+                <OptimizedImage
                   src="/kassensystem-mobil.jpg"
                   alt="Mobile Touchsysteme"
                   className="w-full h-full object-cover"
@@ -149,7 +147,7 @@ export default function Kassensysteme() {
             {/* Cloud */}
             <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 overflow-hidden">
               <div className="aspect-video rounded-2xl overflow-hidden mb-6">
-                <img
+                <OptimizedImage
                   src="/kassensystem-cloud.jpg"
                   alt="Cloud-Verbindung"
                   className="w-full h-full object-cover"
@@ -209,8 +207,6 @@ export default function Kassensysteme() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }
